@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 
 import { trackScenarioCompared } from "@atlas/analytics";
 import { DecisionValidationError, evaluateDecision } from "@atlas/decision-engine";
 import { WizardScreen } from "@atlas/design-system";
+import { LocalStoragePersistenceAdapter } from "@atlas/journey-engine";
 
 import { buyHomeJourney } from "@/features/housing/buy-home.journey";
 import { toDecisionInput } from "@/features/housing/to-decision-input";
@@ -14,6 +16,7 @@ import { ResultScreen } from "./ResultScreen";
 import { StepField } from "./StepField";
 
 export function BuyHomeJourneyClient() {
+  const router = useRouter();
   const journey = useJourneyMachine(buyHomeJourney);
   const { state, currentStep, progress, isComplete, setAnswer, goNext, goBack } = journey;
   const [currentError, setCurrentError] = useState<string | null>(null);
@@ -51,10 +54,17 @@ export function BuyHomeJourneyClient() {
     }
   }, [result]);
 
+  const handleRestart = () => {
+    // Reiniciar de verdad: si solo recargásemos la página, el progreso
+    // persistido en localStorage nos devolvería a este mismo resultado.
+    new LocalStoragePersistenceAdapter().clear(buyHomeJourney.id);
+    router.push("/");
+  };
+
   if (isComplete && result?.data) {
     return (
       <div className="bg-background min-h-screen px-6 py-16">
-        <ResultScreen result={result.data} onRestart={() => window.location.reload()} />
+        <ResultScreen result={result.data} onRestart={handleRestart} />
       </div>
     );
   }

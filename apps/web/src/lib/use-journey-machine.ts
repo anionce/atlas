@@ -17,31 +17,47 @@ import {
 
 /**
  * Puente entre el Journey Engine (una clase de TypeScript sin dependencias
- * de React) y un componente. La máquina se crea una única vez con el
- * inicializador perezoso de useState; forzamos un re-render manual tras
- * cada mutación, y suscribimos la analítica a los eventos del motor.
+ * de React) y un componente.
+ *
+ * El primer render (tanto en el servidor como en el cliente) crea la
+ * máquina SIN tocar localStorage, siempre en el paso 1: así el HTML que
+ * genera el servidor y el primer render del cliente coinciden siempre.
+ * Restaurar el progreso guardado es un efecto que solo corre en el
+ * cliente, después de montar — si lo hiciéramos durante el render nos
+ * arriesgaríamos a un hydration mismatch (el servidor nunca ve
+ * localStorage, así que no puede saber si había una simulación guardada).
  */
 export function useJourneyMachine(definition: JourneyDefinition) {
-  const [{ machine, startedFresh }] = useState(() => {
-    const persistence =
-      typeof window !== "undefined" ? new LocalStoragePersistenceAdapter() : undefined;
-    const alreadyStarted = persistence?.load(definition.id) != null;
-    return {
-      machine: new JourneyMachine(definition, { persistence }),
-      startedFresh: !alreadyStarted,
-    };
-  });
+  const [machine, setMachine] = useState(() => new JourneyMachine(definition));
   const [, setVersion] = useState(0);
   const rerender = () => setVersion((v) => v + 1);
 
   useEffect(() => {
-    // El evento journey_started se emite de forma síncrona en el
-    // constructor, antes de que este efecto pueda suscribirse. Lo
-    // reportamos aquí directamente en vez de vía machine.on(...).
-    if (startedFresh) {
+    const persistence = new LocalStoragePersistenceAdapter();
+    const existingState = persistence.load(definition.id);
+
+    // localStorage no existe durante el render (ni en el servidor ni en el
+    // primer render del cliente antes de hidratar); leerlo ahí causaría el
+    // mismatch que este efecto existe para evitar. Este es exactamente el
+    // caso que la documentación de la regla admite: sincronizar con un
+    // sistema externo desde un efecto.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMachine(
+      new JourneyMachine(definition, {
+        persistence,
+        initialState: existingState ?? undefined,
+      }),
+    );
+
+    if (!existingState) {
       trackJourneyStarted({ journeyId: definition.id });
     }
+    // Solo debe ejecutarse una vez, al montar: restaurar/adjuntar la
+    // persistencia no depende de nada que cambie entre renders.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [definition.id]);
 
+  useEffect(() => {
     return machine.on((event) => {
       switch (event.type) {
         case "question_answered":
@@ -62,7 +78,7 @@ export function useJourneyMachine(definition: JourneyDefinition) {
           break;
       }
     });
-  }, [machine, startedFresh, definition.id]);
+  }, [machine]);
 
   return {
     machine,
