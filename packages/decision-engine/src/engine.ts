@@ -7,6 +7,11 @@ import type {
 } from "./journeys/compound-interest/types";
 import { evaluateFire } from "./journeys/fire/engine";
 import type { FireDecisionInput, FireMetrics } from "./journeys/fire/types";
+import { evaluatePurchaseCosts } from "./journeys/purchase-costs/engine";
+import type {
+  PurchaseCostsDecisionInput,
+  PurchaseCostsMetrics,
+} from "./journeys/purchase-costs/types";
 import type { DecisionInput } from "./types";
 import type { DecisionResult } from "./shared-types";
 
@@ -15,6 +20,9 @@ export function evaluateDecision(
   input: CompoundInterestDecisionInput,
 ): DecisionResult<CompoundInterestMetrics>;
 export function evaluateDecision(input: FireDecisionInput): DecisionResult<FireMetrics>;
+export function evaluateDecision(
+  input: PurchaseCostsDecisionInput,
+): DecisionResult<PurchaseCostsMetrics>;
 /**
  * Único punto de entrada público del Decision Engine, sea cual sea el
  * Journey. Solo hace dispatch por `journeyId`: toda la lógica vive en el
@@ -25,7 +33,8 @@ export function evaluateDecision(
 ):
   | DecisionResult<BuyHomeMetrics>
   | DecisionResult<CompoundInterestMetrics>
-  | DecisionResult<FireMetrics> {
+  | DecisionResult<FireMetrics>
+  | DecisionResult<PurchaseCostsMetrics> {
   switch (input.journeyId) {
     case "buy-home":
       return evaluateBuyHome(input);
@@ -33,5 +42,7 @@ export function evaluateDecision(
       return evaluateCompoundInterest(input);
     case "fire":
       return evaluateFire(input);
+    case "purchase-costs":
+      return evaluatePurchaseCosts(input);
   }
 }

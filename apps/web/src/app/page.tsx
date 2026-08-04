@@ -30,6 +30,11 @@ const tools = [
     title: "Independencia financiera (FIRE)",
     description: "Cuánto capital necesitas para vivir de las rentas, y cuántos años te llevaría.",
   },
+  {
+    href: "/gastos-compra-vivienda",
+    title: "Gastos de compra de vivienda",
+    description: "Cuánto pagarías en ITP o IVA, notaría, registro y tasación.",
+  },
 ];
 
 const faqs = [
@@ -69,7 +74,7 @@ export default function Home() {
         </p>
       </main>
 
-      <section className="mt-16 grid w-full max-w-[900px] grid-cols-1 gap-4 sm:grid-cols-3">
+      <section className="mt-16 grid w-full max-w-[1100px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {tools.map((tool) => (
           <Card key={tool.href}>
             <CardTitle>{tool.title}</CardTitle>

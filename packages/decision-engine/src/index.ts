@@ -4,6 +4,7 @@ export { DecisionValidationError } from "./errors";
 export { compareScenarios as compareBuyHomeScenarios } from "./journeys/buy-home/scenarios";
 export { compareScenarios as compareCompoundInterestScenarios } from "./journeys/compound-interest/scenarios";
 export { compareScenarios as compareFireScenarios } from "./journeys/fire/scenarios";
+export { compareScenarios as comparePurchaseCostsScenarios } from "./journeys/purchase-costs/scenarios";
 
 export type { DecisionInput } from "./types";
 export type {
@@ -17,6 +18,11 @@ export type {
   CompoundInterestMetrics,
 } from "./journeys/compound-interest/types";
 export type { FireDecisionInput, FireInputValues, FireMetrics } from "./journeys/fire/types";
+export type {
+  PurchaseCostsDecisionInput,
+  PurchaseCostsInputValues,
+  PurchaseCostsMetrics,
+} from "./journeys/purchase-costs/types";
 
 export type {
   DecisionResult,
