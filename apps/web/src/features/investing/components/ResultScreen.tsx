@@ -1,3 +1,5 @@
+import { CircleCheckBig, TriangleAlert } from "lucide-react";
+
 import type { DecisionResult, FireMetrics } from "@atlas/decision-engine";
 import {
   Button,
@@ -56,8 +58,13 @@ export function ResultScreen({ result, onRestart }: ResultScreenProps) {
           <h2 className="text-foreground text-xl font-semibold">A tener en cuenta</h2>
           {result.warnings.map((warning) => (
             <Card key={warning.code} className="border-warning/40 bg-warning/10">
-              <CardTitle className="text-base">{warning.title}</CardTitle>
-              <CardDescription>{warning.message}</CardDescription>
+              <div className="flex gap-3">
+                <TriangleAlert className="text-warning mt-0.5 size-5 shrink-0" strokeWidth={2} />
+                <div>
+                  <CardTitle className="text-base">{warning.title}</CardTitle>
+                  <CardDescription>{warning.message}</CardDescription>
+                </div>
+              </div>
             </Card>
           ))}
         </section>
@@ -68,8 +75,13 @@ export function ResultScreen({ result, onRestart }: ResultScreenProps) {
           <h2 className="text-foreground text-xl font-semibold">Lo positivo</h2>
           {result.insights.map((insight) => (
             <Card key={insight.code} className="border-success/40 bg-success/10">
-              <CardTitle className="text-base">{insight.title}</CardTitle>
-              <CardDescription>{insight.message}</CardDescription>
+              <div className="flex gap-3">
+                <CircleCheckBig className="text-success mt-0.5 size-5 shrink-0" strokeWidth={2} />
+                <div>
+                  <CardTitle className="text-base">{insight.title}</CardTitle>
+                  <CardDescription>{insight.message}</CardDescription>
+                </div>
+              </div>
             </Card>
           ))}
         </section>

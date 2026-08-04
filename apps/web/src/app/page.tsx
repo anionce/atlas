@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { House, PiggyBank, Receipt, TrendingUp } from "lucide-react";
 
 import { generateFAQSchema, generateMetadata as buildSeoMetadata } from "@atlas/seo";
-import { buttonVariants, Card, CardDescription, CardFooter, CardTitle } from "@atlas/design-system";
+import { Card, CardDescription, CardTitle } from "@atlas/design-system";
 
 const TITLE = "Atlas — Toma mejores decisiones financieras";
 const DESCRIPTION =
@@ -19,21 +20,25 @@ const tools = [
     href: "/comprar-vivienda",
     title: "Comprar una vivienda",
     description: "Cuánto puedes gastar, la cuota estimada y los gastos de compra.",
+    icon: House,
   },
   {
     href: "/interes-compuesto",
     title: "Ahorrar con interés compuesto",
     description: "Cuánto podría crecer tu ahorro a largo plazo, y cuánto tardarías en tu objetivo.",
+    icon: PiggyBank,
   },
   {
     href: "/fire",
     title: "Independencia financiera (FIRE)",
     description: "Cuánto capital necesitas para vivir de las rentas, y cuántos años te llevaría.",
+    icon: TrendingUp,
   },
   {
     href: "/gastos-compra-vivienda",
     title: "Gastos de compra de vivienda",
     description: "Cuánto pagarías en ITP o IVA, notaría, registro y tasación.",
+    icon: Receipt,
   },
 ];
 
@@ -76,19 +81,26 @@ export default function Home() {
 
       <section className="mt-16 grid w-full max-w-[1100px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {tools.map((tool) => (
-          <Card key={tool.href}>
-            <CardTitle>{tool.title}</CardTitle>
-            <CardDescription>{tool.description}</CardDescription>
-            <CardFooter>
-              <Link
-                href={tool.href}
-                aria-label={`Empezar: ${tool.title}`}
-                className={buttonVariants({ size: "md" })}
-              >
+          <Link
+            key={tool.href}
+            href={tool.href}
+            aria-label={`Empezar: ${tool.title}`}
+            className="group"
+          >
+            <Card className="group-hover:border-primary/30 h-full transition-all duration-200 group-hover:-translate-y-1 group-hover:shadow-lg">
+              <div className="bg-primary/10 text-primary mb-4 flex size-11 items-center justify-center rounded-xl">
+                <tool.icon className="size-5" strokeWidth={2} />
+              </div>
+              <CardTitle>{tool.title}</CardTitle>
+              <CardDescription>{tool.description}</CardDescription>
+              <span className="text-primary mt-4 inline-flex items-center gap-1 text-sm font-medium">
                 Empezar
-              </Link>
-            </CardFooter>
-          </Card>
+                <span aria-hidden className="transition-transform group-hover:translate-x-0.5">
+                  →
+                </span>
+              </span>
+            </Card>
+          </Link>
         ))}
       </section>
 

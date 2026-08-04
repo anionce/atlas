@@ -1,5 +1,7 @@
 "use client";
 
+import { Check, X } from "lucide-react";
+
 import { Button, Input } from "@atlas/design-system";
 import type { StepDefinition } from "@atlas/journey-engine";
 
@@ -27,6 +29,7 @@ export function StepField({ step, value, error, onChange, locale = "es" }: StepF
             variant={value === true ? "primary" : "secondary"}
             onClick={() => onChange(true)}
           >
+            <Check className="size-4" strokeWidth={2.5} />
             Sí
           </Button>
           <Button
@@ -34,6 +37,7 @@ export function StepField({ step, value, error, onChange, locale = "es" }: StepF
             variant={value === false ? "primary" : "secondary"}
             onClick={() => onChange(false)}
           >
+            <X className="size-4" strokeWidth={2.5} />
             No
           </Button>
         </div>
