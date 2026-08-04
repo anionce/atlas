@@ -7,6 +7,8 @@ const nextConfig: NextConfig = {
     "@atlas/decision-engine",
     "@atlas/formula-engine",
     "@atlas/rules-engine",
+    "@atlas/analytics",
+    "@atlas/seo",
   ],
 };
 

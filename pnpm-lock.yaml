@@ -29,6 +29,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@atlas/analytics':
+        specifier: workspace:*
+        version: link:../../packages/analytics
       '@atlas/decision-engine':
         specifier: workspace:*
         version: link:../../packages/decision-engine
@@ -38,6 +41,9 @@ importers:
       '@atlas/journey-engine':
         specifier: workspace:*
         version: link:../../packages/journey-engine
+      '@atlas/seo':
+        specifier: workspace:*
+        version: link:../../packages/seo
       '@base-ui/react':
         specifier: ^1.6.0
         version: 1.6.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
@@ -114,6 +120,30 @@ importers:
       typescript:
         specifier: ^5
         version: 5.9.3
+      vitest:
+        specifier: ^4.1.10
+        version: 4.1.10(@types/node@20.19.43)(@vitest/coverage-v8@4.1.10)(jsdom@30.0.1)(vite@8.2.0(@types/node@20.19.43)(jiti@2.7.0)(yaml@2.9.0))
+
+  packages/analytics:
+    devDependencies:
+      '@eslint/js':
+        specifier: ^9
+        version: 9.39.5
+      eslint:
+        specifier: ^9
+        version: 9.39.5(jiti@2.7.0)(supports-color@7.2.0)
+      eslint-config-prettier:
+        specifier: ^10.1.8
+        version: 10.1.8(eslint@9.39.5(jiti@2.7.0)(supports-color@7.2.0))
+      globals:
+        specifier: ^15.15.0
+        version: 15.15.0
+      typescript:
+        specifier: ^5
+        version: 5.9.3
+      typescript-eslint:
+        specifier: ^8.46.4
+        version: 8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3)
       vitest:
         specifier: ^4.1.10
         version: 4.1.10(@types/node@20.19.43)(@vitest/coverage-v8@4.1.10)(jsdom@30.0.1)(vite@8.2.0(@types/node@20.19.43)(jiti@2.7.0)(yaml@2.9.0))
@@ -272,6 +302,33 @@ importers:
       globals:
         specifier: ^15.15.0
         version: 15.15.0
+      typescript:
+        specifier: ^5
+        version: 5.9.3
+      typescript-eslint:
+        specifier: ^8.46.4
+        version: 8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3)
+      vitest:
+        specifier: ^4.1.10
+        version: 4.1.10(@types/node@20.19.43)(@vitest/coverage-v8@4.1.10)(jsdom@30.0.1)(vite@8.2.0(@types/node@20.19.43)(jiti@2.7.0)(yaml@2.9.0))
+
+  packages/seo:
+    devDependencies:
+      '@eslint/js':
+        specifier: ^9
+        version: 9.39.5
+      eslint:
+        specifier: ^9
+        version: 9.39.5(jiti@2.7.0)(supports-color@7.2.0)
+      eslint-config-prettier:
+        specifier: ^10.1.8
+        version: 10.1.8(eslint@9.39.5(jiti@2.7.0)(supports-color@7.2.0))
+      globals:
+        specifier: ^15.15.0
+        version: 15.15.0
+      next:
+        specifier: 16.3.0
+        version: 16.3.0(@babel/core@7.29.7(supports-color@7.2.0))(@playwright/test@1.62.1)(@types/node@20.19.43)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       typescript:
         specifier: ^5
         version: 5.9.3
