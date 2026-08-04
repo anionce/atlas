@@ -1,12 +1,14 @@
 import type { BuyHomeDecisionInput } from "./journeys/buy-home/types";
 import type { CompoundInterestDecisionInput } from "./journeys/compound-interest/types";
+import type { FireDecisionInput } from "./journeys/fire/types";
 
 /**
- * Contrato genérico de TDD-001, ahora con dos Journeys. Añadir un tercero
+ * Contrato genérico de TDD-001, ahora con tres Journeys. Añadir uno más
  * es añadir un miembro más a esta unión y un `case` más en `engine.ts` —
  * nunca tocar los Journeys existentes.
  */
-export type DecisionInput = BuyHomeDecisionInput | CompoundInterestDecisionInput;
+export type DecisionInput =
+  BuyHomeDecisionInput | CompoundInterestDecisionInput | FireDecisionInput;
 
 export type {
   BuyHomeDecisionInput,
@@ -18,3 +20,4 @@ export type {
   CompoundInterestInputValues,
   CompoundInterestMetrics,
 } from "./journeys/compound-interest/types";
+export type { FireDecisionInput, FireInputValues, FireMetrics } from "./journeys/fire/types";

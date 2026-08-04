@@ -9,3 +9,6 @@ export type { AffordabilityInput, AffordabilityResult } from "./affordability";
 
 export { calculateCompoundInterest, monthsToReachGoal } from "./compound-interest";
 export type { CompoundInterestInput, CompoundInterestResult } from "./compound-interest";
+
+export { calculateFireNumber } from "./fire";
+export type { FireNumberInput } from "./fire";

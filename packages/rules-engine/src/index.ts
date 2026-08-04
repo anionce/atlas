@@ -14,3 +14,6 @@ export type { SavingsGoalRulesInput } from "./savings-goal-rules";
 
 export { evaluateGrowthRules } from "./growth-rules";
 export type { GrowthRulesInput } from "./growth-rules";
+
+export { evaluateFireRules } from "./fire-rules";
+export type { FireRulesInput } from "./fire-rules";

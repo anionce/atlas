@@ -25,6 +25,11 @@ const tools = [
     title: "Ahorrar con interés compuesto",
     description: "Cuánto podría crecer tu ahorro a largo plazo, y cuánto tardarías en tu objetivo.",
   },
+  {
+    href: "/fire",
+    title: "Independencia financiera (FIRE)",
+    description: "Cuánto capital necesitas para vivir de las rentas, y cuántos años te llevaría.",
+  },
 ];
 
 const faqs = [
@@ -64,7 +69,7 @@ export default function Home() {
         </p>
       </main>
 
-      <section className="mt-16 grid w-full max-w-[760px] grid-cols-1 gap-4 sm:grid-cols-2">
+      <section className="mt-16 grid w-full max-w-[900px] grid-cols-1 gap-4 sm:grid-cols-3">
         {tools.map((tool) => (
           <Card key={tool.href}>
             <CardTitle>{tool.title}</CardTitle>
