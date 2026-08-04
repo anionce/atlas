@@ -1,7 +1,7 @@
-import type { BuyHomeInputValues, DecisionInput } from "@atlas/decision-engine";
+import type { BuyHomeDecisionInput, BuyHomeInputValues } from "@atlas/decision-engine";
 
 /** Traduce las respuestas sueltas del Journey al contrato tipado del Decision Engine. */
-export function toDecisionInput(answers: Record<string, unknown>): DecisionInput {
+export function toDecisionInput(answers: Record<string, unknown>): BuyHomeDecisionInput {
   const values: BuyHomeInputValues = {
     monthlyIncome: Number(answers.monthlyIncome),
     savings: Number(answers.savings),

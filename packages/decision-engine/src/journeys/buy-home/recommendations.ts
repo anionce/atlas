@@ -1,6 +1,7 @@
 import type { AffordabilityResult } from "@atlas/formula-engine";
 
-import type { BuyHomeInputValues, Recommendation } from "./types";
+import type { Recommendation } from "../../shared-types";
+import type { BuyHomeInputValues } from "./types";
 
 const MAX_RECOMMENDATIONS = 3;
 

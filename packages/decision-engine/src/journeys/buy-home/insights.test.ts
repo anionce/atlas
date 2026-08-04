@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
 
 import { generateInsights } from "./insights";
-import type { DecisionMetrics } from "./types";
+import type { BuyHomeMetrics } from "./types";
 
-const baseMetrics: DecisionMetrics = {
+const baseMetrics: BuyHomeMetrics = {
   maxPropertyPrice: 250_000,
   requiredEntry: 50_000,
   monthlyPayment: 900,

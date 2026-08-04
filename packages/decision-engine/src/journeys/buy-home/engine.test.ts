@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest";
 
-import { evaluateDecision } from "./engine";
-import { DecisionValidationError } from "./errors";
-import type { DecisionInput } from "./types";
+import { evaluateBuyHome } from "./engine";
+import { DecisionValidationError } from "../../errors";
+import type { BuyHomeDecisionInput } from "./types";
 
-const baseInput: DecisionInput = {
+const baseInput: BuyHomeDecisionInput = {
   journeyId: "buy-home",
   version: "1.0.0",
   locale: "es",
@@ -17,9 +17,9 @@ const baseInput: DecisionInput = {
   },
 };
 
-describe("evaluateDecision", () => {
+describe("evaluateBuyHome", () => {
   it("returns a result with the same shape every time (Result Builder contract)", () => {
-    const result = evaluateDecision(baseInput);
+    const result = evaluateBuyHome(baseInput);
 
     expect(result.summary).toContain("€");
     expect(result.metrics.maxPropertyPrice).toBeGreaterThan(0);
@@ -33,21 +33,21 @@ describe("evaluateDecision", () => {
   });
 
   it("is deterministic: the same input always produces the same metrics", () => {
-    const a = evaluateDecision(baseInput);
-    const b = evaluateDecision(baseInput);
+    const a = evaluateBuyHome(baseInput);
+    const b = evaluateBuyHome(baseInput);
     expect(a.metrics).toEqual(b.metrics);
   });
 
   it("propagates validation errors instead of computing a result", () => {
-    const invalidInput: DecisionInput = {
+    const invalidInput: BuyHomeDecisionInput = {
       ...baseInput,
       values: { ...baseInput.values, monthlyIncome: -100 },
     };
-    expect(() => evaluateDecision(invalidInput)).toThrow(DecisionValidationError);
+    expect(() => evaluateBuyHome(invalidInput)).toThrow(DecisionValidationError);
   });
 
   it("never returns more than 3 recommendations", () => {
-    const result = evaluateDecision({
+    const result = evaluateBuyHome({
       ...baseInput,
       values: {
         ...baseInput.values,
@@ -60,7 +60,7 @@ describe("evaluateDecision", () => {
   });
 
   it("lowers confidence when optional fields are missing", () => {
-    const withOptionals = evaluateDecision({
+    const withOptionals = evaluateBuyHome({
       ...baseInput,
       values: {
         ...baseInput.values,
@@ -69,23 +69,23 @@ describe("evaluateDecision", () => {
         downPaymentRatio: 0.2,
       },
     });
-    const withoutOptionals = evaluateDecision(baseInput);
+    const withoutOptionals = evaluateBuyHome(baseInput);
     expect(withoutOptionals.confidence).toBeLessThan(withOptionals.confidence);
   });
 
   it("always reports a debt-ratio insight, since affordability is capped at a safe level", () => {
-    const result = evaluateDecision(baseInput);
+    const result = evaluateBuyHome(baseInput);
     const debtRatioCodes = ["healthy_debt_ratio", "moderate_debt_ratio", "high_debt_ratio"];
     const allFindings = [...result.insights, ...result.warnings];
     expect(allFindings.some((finding) => debtRatioCodes.includes(finding.code))).toBe(true);
   });
 
   it("adds a wait_and_save recommendation only when the user reported savings capacity", () => {
-    const withoutCapacity = evaluateDecision({
+    const withoutCapacity = evaluateBuyHome({
       ...baseInput,
       values: { ...baseInput.values, savings: 5_000 },
     });
-    const withCapacity = evaluateDecision({
+    const withCapacity = evaluateBuyHome({
       ...baseInput,
       values: { ...baseInput.values, savings: 5_000, monthlySavingsCapacity: 300 },
     });

@@ -1,5 +1,6 @@
 import { computeMetrics } from "./metrics";
-import type { BuyHomeInputValues, ScenarioComparison, ScenarioResult } from "./types";
+import type { ScenarioComparison, ScenarioResult } from "../../shared-types";
+import type { BuyHomeInputValues, BuyHomeMetrics } from "./types";
 
 const HIGHER_DOWN_PAYMENT_RATIO = 0.3;
 
@@ -9,8 +10,8 @@ const HIGHER_DOWN_PAYMENT_RATIO = 0.3;
  * ahorrar al mes) esperando un año. No inventa datos que el usuario no ha
  * dado.
  */
-export function compareScenarios(values: BuyHomeInputValues): ScenarioComparison {
-  const scenarios: ScenarioResult[] = [
+export function compareScenarios(values: BuyHomeInputValues): ScenarioComparison<BuyHomeMetrics> {
+  const scenarios: ScenarioResult<BuyHomeMetrics>[] = [
     { id: "today", label: "Comprar hoy", metrics: computeMetrics(values) },
     {
       id: "higher-down-payment",
@@ -35,7 +36,7 @@ export function compareScenarios(values: BuyHomeInputValues): ScenarioComparison
   return { scenarios, explanation };
 }
 
-function buildExplanation(scenarios: ScenarioResult[]): string {
+function buildExplanation(scenarios: ScenarioResult<BuyHomeMetrics>[]): string {
   const [base, ...alternatives] = scenarios;
   if (!base || alternatives.length === 0) {
     return "No hay suficientes escenarios para comparar.";

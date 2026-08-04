@@ -1,4 +1,4 @@
-import type { BuyHomeMetrics, DecisionResult } from "@atlas/decision-engine";
+import type { CompoundInterestMetrics, DecisionResult } from "@atlas/decision-engine";
 import {
   Button,
   Card,
@@ -12,35 +12,49 @@ function formatEuros(amount: number): string {
   return `${Math.round(amount).toLocaleString("es-ES")} €`;
 }
 
+function formatMonths(months: number): string {
+  const years = Math.floor(months / 12);
+  const remainingMonths = months % 12;
+  if (years === 0) return `${remainingMonths} meses`;
+  if (remainingMonths === 0) return `${years} años`;
+  return `${years} años y ${remainingMonths} meses`;
+}
+
 export interface ResultScreenProps {
-  result: DecisionResult<BuyHomeMetrics>;
+  result: DecisionResult<CompoundInterestMetrics>;
   onRestart: () => void;
 }
 
 export function ResultScreen({ result, onRestart }: ResultScreenProps) {
+  const { monthsToGoal } = result.metrics;
+
   return (
     <div className="mx-auto flex w-full max-w-[900px] flex-col gap-8">
       <Card className="bg-primary text-primary-foreground rounded-3xl">
         <CardDescription className="text-primary-foreground/80">Resumen</CardDescription>
-        <CardValue className="text-4xl">{formatEuros(result.metrics.maxPropertyPrice)}</CardValue>
+        <CardValue className="text-4xl">{formatEuros(result.metrics.finalBalance)}</CardValue>
         <p className="mt-2 text-lg">{result.summary}</p>
       </Card>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+      <div
+        className={`grid grid-cols-1 gap-4 ${monthsToGoal !== null ? "sm:grid-cols-3" : "sm:grid-cols-2"}`}
+      >
         <Card>
-          <CardDescription>Cuota estimada</CardDescription>
+          <CardDescription>Aportado en total</CardDescription>
+          <CardValue className="text-2xl">{formatEuros(result.metrics.totalContributed)}</CardValue>
+        </Card>
+        <Card>
+          <CardDescription>Intereses ganados</CardDescription>
           <CardValue className="text-2xl">
-            {formatEuros(result.metrics.monthlyPayment)}/mes
+            {formatEuros(result.metrics.totalInterestEarned)}
           </CardValue>
         </Card>
-        <Card>
-          <CardDescription>Entrada necesaria</CardDescription>
-          <CardValue className="text-2xl">{formatEuros(result.metrics.requiredEntry)}</CardValue>
-        </Card>
-        <Card>
-          <CardDescription>Gastos de compra estimados</CardDescription>
-          <CardValue className="text-2xl">{formatEuros(result.metrics.purchaseCosts)}</CardValue>
-        </Card>
+        {monthsToGoal !== null ? (
+          <Card>
+            <CardDescription>Tiempo hasta tu objetivo</CardDescription>
+            <CardValue className="text-2xl">{formatMonths(monthsToGoal)}</CardValue>
+          </Card>
+        ) : null}
       </div>
 
       {result.warnings.length > 0 ? (
@@ -84,18 +98,16 @@ export function ResultScreen({ result, onRestart }: ResultScreenProps) {
             <thead className="bg-muted text-muted-foreground">
               <tr>
                 <th className="px-4 py-3 font-medium">Escenario</th>
-                <th className="px-4 py-3 font-medium">Precio</th>
-                <th className="px-4 py-3 font-medium">Cuota</th>
-                <th className="px-4 py-3 font-medium">Intereses totales</th>
+                <th className="px-4 py-3 font-medium">Balance final</th>
+                <th className="px-4 py-3 font-medium">Intereses ganados</th>
               </tr>
             </thead>
             <tbody>
               {result.comparison.scenarios.map((scenario) => (
                 <tr key={scenario.id} className="border-border border-t">
                   <td className="text-foreground px-4 py-3 font-medium">{scenario.label}</td>
-                  <td className="px-4 py-3">{formatEuros(scenario.metrics.maxPropertyPrice)}</td>
-                  <td className="px-4 py-3">{formatEuros(scenario.metrics.monthlyPayment)}</td>
-                  <td className="px-4 py-3">{formatEuros(scenario.metrics.totalInterest)}</td>
+                  <td className="px-4 py-3">{formatEuros(scenario.metrics.finalBalance)}</td>
+                  <td className="px-4 py-3">{formatEuros(scenario.metrics.totalInterestEarned)}</td>
                 </tr>
               ))}
             </tbody>

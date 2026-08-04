@@ -1,0 +1,27 @@
+export interface BuyHomeInputValues {
+  monthlyIncome: number;
+  monthlyDebts?: number;
+  savings: number;
+  /** Cuánto podría ahorrar al mes a partir de ahora; alimenta el escenario "esperar". */
+  monthlySavingsCapacity?: number;
+  interestRate: number;
+  mortgageYears: number;
+  isNewConstruction: boolean;
+  downPaymentRatio?: number;
+}
+
+export interface BuyHomeDecisionInput {
+  journeyId: "buy-home";
+  version: string;
+  locale: "es";
+  values: BuyHomeInputValues;
+}
+
+export interface BuyHomeMetrics {
+  maxPropertyPrice: number;
+  requiredEntry: number;
+  monthlyPayment: number;
+  totalInterest: number;
+  debtRatioPct: number;
+  purchaseCosts: number;
+}

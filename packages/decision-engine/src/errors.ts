@@ -1,4 +1,4 @@
-import type { DecisionError } from "./types";
+import type { DecisionError } from "./shared-types";
 
 /** Nunca lanzar errores genéricos: todo error tiene formato uniforme (DecisionError). */
 export class DecisionValidationError extends Error {

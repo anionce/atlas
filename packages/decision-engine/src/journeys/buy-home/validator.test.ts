@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { DecisionValidationError } from "./errors";
+import { DecisionValidationError } from "../../errors";
 import { validateBuyHomeInput } from "./validator";
 import type { BuyHomeInputValues } from "./types";
 

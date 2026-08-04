@@ -9,16 +9,16 @@ import { WizardScreen } from "@atlas/design-system";
 import { LocalStoragePersistenceAdapter } from "@atlas/journey-engine";
 
 import { StepField } from "@/components/StepField";
-import { buyHomeJourney } from "@/features/housing/buy-home.journey";
-import { toDecisionInput } from "@/features/housing/to-decision-input";
 import { useJourneyMachine } from "@/lib/use-journey-machine";
 import { useStepError } from "@/lib/use-step-error";
 
+import { compoundInterestJourney } from "../compound-interest.journey";
+import { toDecisionInput } from "../to-decision-input";
 import { ResultScreen } from "./ResultScreen";
 
-export function BuyHomeJourneyClient() {
+export function CompoundInterestJourneyClient() {
   const router = useRouter();
-  const journey = useJourneyMachine(buyHomeJourney);
+  const journey = useJourneyMachine(compoundInterestJourney);
   const { state, currentStep, progress, isComplete, setAnswer, goNext, goBack } = journey;
   const [currentError, setCurrentError] = useStepError(currentStep?.id);
 
@@ -40,16 +40,14 @@ export function BuyHomeJourneyClient() {
   useEffect(() => {
     if (result?.data) {
       trackScenarioCompared({
-        journeyId: buyHomeJourney.id,
+        journeyId: compoundInterestJourney.id,
         scenarioIds: result.data.comparison.scenarios.map((s) => s.id),
       });
     }
   }, [result]);
 
   const handleRestart = () => {
-    // Reiniciar de verdad: si solo recargásemos la página, el progreso
-    // persistido en localStorage nos devolvería a este mismo resultado.
-    new LocalStoragePersistenceAdapter().clear(buyHomeJourney.id);
+    new LocalStoragePersistenceAdapter().clear(compoundInterestJourney.id);
     router.push("/");
   };
 
@@ -79,7 +77,7 @@ export function BuyHomeJourneyClient() {
   return (
     <div className="bg-background min-h-screen px-6 py-16">
       <WizardScreen
-        title={buyHomeJourney.title.es}
+        title={compoundInterestJourney.title.es}
         stepLabel={`Paso ${stepNumber} de ${progress.total}`}
         progressValue={progress.current}
         progressMax={progress.total}

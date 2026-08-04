@@ -1,7 +1,7 @@
 import { calculateAffordability, calculatePurchaseCosts } from "@atlas/formula-engine";
 import type { AffordabilityResult } from "@atlas/formula-engine";
 
-import type { BuyHomeInputValues, DecisionMetrics } from "./types";
+import type { BuyHomeInputValues, BuyHomeMetrics } from "./types";
 
 const DEFAULT_DOWN_PAYMENT_RATIO = 0.2;
 
@@ -16,7 +16,7 @@ export function computeAffordability(values: BuyHomeInputValues): AffordabilityR
   });
 }
 
-export function computeMetrics(values: BuyHomeInputValues): DecisionMetrics {
+export function computeMetrics(values: BuyHomeInputValues): BuyHomeMetrics {
   const affordability = computeAffordability(values);
   const purchaseCosts = calculatePurchaseCosts({
     propertyPrice: affordability.maxPropertyPrice,

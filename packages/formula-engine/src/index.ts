@@ -6,3 +6,6 @@ export type { PurchaseCostsInput, PurchaseCostsBreakdown } from "./purchase-cost
 
 export { calculateAffordability } from "./affordability";
 export type { AffordabilityInput, AffordabilityResult } from "./affordability";
+
+export { calculateCompoundInterest, monthsToReachGoal } from "./compound-interest";
+export type { CompoundInterestInput, CompoundInterestResult } from "./compound-interest";

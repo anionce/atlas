@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test";
 
 test("completes the buy-home journey end to end", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("link", { name: "Empieza la simulación" }).click();
+  await page.getByRole("link", { name: "Empezar: Comprar una vivienda" }).click();
 
   await expect(page.getByText("Paso 1 de 7")).toBeVisible();
   await page.getByLabel("¿Cuánto ganas al mes?").fill("2500");

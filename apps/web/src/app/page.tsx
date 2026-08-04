@@ -2,17 +2,30 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { generateFAQSchema, generateMetadata as buildSeoMetadata } from "@atlas/seo";
-import { buttonVariants, Card, CardDescription, CardTitle } from "@atlas/design-system";
+import { buttonVariants, Card, CardDescription, CardFooter, CardTitle } from "@atlas/design-system";
 
 const TITLE = "Atlas — Toma mejores decisiones financieras";
 const DESCRIPTION =
-  "Simulaciones interactivas y explicaciones claras para decisiones financieras importantes, empezando por comprar una vivienda.";
+  "Simulaciones interactivas y explicaciones claras para decisiones financieras importantes: comprar una vivienda, ahorrar a largo plazo, y más.";
 
 export const metadata: Metadata = buildSeoMetadata({
   title: TITLE,
   description: DESCRIPTION,
   path: "/",
 });
+
+const tools = [
+  {
+    href: "/comprar-vivienda",
+    title: "Comprar una vivienda",
+    description: "Cuánto puedes gastar, la cuota estimada y los gastos de compra.",
+  },
+  {
+    href: "/interes-compuesto",
+    title: "Ahorrar con interés compuesto",
+    description: "Cuánto podría crecer tu ahorro a largo plazo, y cuánto tardarías en tu objetivo.",
+  },
+];
 
 const faqs = [
   {
@@ -21,9 +34,9 @@ const faqs = [
       "No. Es una estimación orientativa para ayudarte a entender tu situación antes de hablar con un banco, no una oferta ni un compromiso de financiación.",
   },
   {
-    question: "¿Cómo calculáis cuánto puedo gastar?",
+    question: "¿Cómo calculáis los resultados?",
     answer:
-      "A partir de tus ingresos, tu ahorro y el tipo de interés estimamos la cuota máxima razonable y la entrada que necesitarías, y te devolvemos el precio de vivienda que encaja con ambas.",
+      "A partir de las respuestas que nos das, con fórmulas financieras estándar. Nunca recomendamos un producto solo porque pague más.",
   },
   {
     question: "¿Guardáis mis datos?",
@@ -43,16 +56,31 @@ export default function Home() {
       />
       <main className="flex w-full max-w-[760px] flex-col items-center gap-8 text-center">
         <h1 className="text-foreground text-4xl leading-tight font-semibold tracking-tight text-balance sm:text-5xl">
-          Toma mejores decisiones antes de comprar una vivienda.
+          Toma mejores decisiones financieras.
         </h1>
         <p className="text-muted-foreground max-w-md text-lg">
-          Responde unas preguntas y te ayudamos a entender cuánto puedes gastar, cuánto te costaría
-          y qué podrías mejorar.
+          Elige qué quieres decidir. Respondes unas preguntas y te ayudamos a entender qué te
+          conviene, sin jerga bancaria.
         </p>
-        <Link href="/comprar-vivienda" className={buttonVariants({ size: "lg" })}>
-          Empieza la simulación
-        </Link>
       </main>
+
+      <section className="mt-16 grid w-full max-w-[760px] grid-cols-1 gap-4 sm:grid-cols-2">
+        {tools.map((tool) => (
+          <Card key={tool.href}>
+            <CardTitle>{tool.title}</CardTitle>
+            <CardDescription>{tool.description}</CardDescription>
+            <CardFooter>
+              <Link
+                href={tool.href}
+                aria-label={`Empezar: ${tool.title}`}
+                className={buttonVariants({ size: "md" })}
+              >
+                Empezar
+              </Link>
+            </CardFooter>
+          </Card>
+        ))}
+      </section>
 
       <section className="mt-24 flex w-full max-w-[760px] flex-col gap-4">
         <h2 className="text-foreground text-xl font-semibold">Preguntas frecuentes</h2>

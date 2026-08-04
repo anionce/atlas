@@ -1,5 +1,6 @@
-import { DecisionValidationError } from "./errors";
-import type { BuyHomeInputValues, DecisionError } from "./types";
+import { DecisionValidationError } from "../../errors";
+import type { DecisionError } from "../../shared-types";
+import type { BuyHomeInputValues } from "./types";
 
 const MAX_MORTGAGE_YEARS = 40;
 const MAX_INTEREST_RATE_PCT = 15;

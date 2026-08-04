@@ -4,7 +4,8 @@ import {
   evaluateSavingsRules,
 } from "@atlas/rules-engine";
 
-import type { DecisionMetrics, Insight } from "./types";
+import type { Insight } from "../../shared-types";
+import type { BuyHomeMetrics } from "./types";
 
 /**
  * El Insight Generator traduce los códigos que emite el Rule Evaluator a
@@ -39,7 +40,7 @@ const INSIGHT_COPY: Record<string, Omit<Insight, "code" | "severity">> = {
   },
 };
 
-export function generateInsights(metrics: DecisionMetrics, requiredEntry: number, savings: number) {
+export function generateInsights(metrics: BuyHomeMetrics, requiredEntry: number, savings: number) {
   const triggers = [
     ...evaluateDebtRatioRules({ debtRatioPct: metrics.debtRatioPct }),
     ...evaluateSavingsRules({ savings, requiredEntry }),
