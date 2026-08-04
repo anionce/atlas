@@ -69,6 +69,11 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
+      <nav className="fixed top-0 right-0 p-6">
+        <Link href="/blog" className="text-muted-foreground text-sm hover:underline">
+          Blog
+        </Link>
+      </nav>
       <main className="flex w-full max-w-[760px] flex-col items-center gap-8 text-center">
         <h1 className="text-foreground text-4xl leading-tight font-semibold tracking-tight text-balance sm:text-5xl">
           Toma mejores decisiones financieras.
