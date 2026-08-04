@@ -10,6 +10,15 @@ describe("generateRecommendations", () => {
     expect(newBuild.some((r) => r.id === "check_regional_itp")).toBe(false);
   });
 
+  it("does not suggest checking the regional ITP once a region is already given", () => {
+    const withRegion = generateRecommendations({
+      propertyPrice: 250_000,
+      isNewConstruction: false,
+      region: "madrid",
+    });
+    expect(withRegion.some((r) => r.id === "check_regional_itp")).toBe(false);
+  });
+
   it("always includes a budget buffer tip and never exceeds 3 recommendations", () => {
     const recommendations = generateRecommendations({
       propertyPrice: 250_000,

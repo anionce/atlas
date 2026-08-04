@@ -24,4 +24,29 @@ describe("calculatePurchaseCosts", () => {
     expect(result.notary).toBe(300);
     expect(result.registry).toBe(200);
   });
+
+  it("uses the region's ITP rate when given, for resale properties", () => {
+    const madrid = calculatePurchaseCosts({
+      propertyPrice: 250_000,
+      isNewConstruction: false,
+      region: "madrid",
+    });
+    expect(madrid.transferTaxOrVat).toBeCloseTo(250_000 * 0.06, 6);
+
+    const cataluna = calculatePurchaseCosts({
+      propertyPrice: 250_000,
+      isNewConstruction: false,
+      region: "cataluna",
+    });
+    expect(cataluna.transferTaxOrVat).toBeCloseTo(250_000 * 0.1, 6);
+  });
+
+  it("ignores region for new construction, which always uses national IVA", () => {
+    const result = calculatePurchaseCosts({
+      propertyPrice: 250_000,
+      isNewConstruction: true,
+      region: "pais-vasco",
+    });
+    expect(result.transferTaxOrVat).toBeCloseTo(250_000 * 0.1, 6);
+  });
 });

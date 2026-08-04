@@ -10,4 +10,16 @@ describe("toDecisionInput", () => {
     expect(input.values.propertyPrice).toBe(250_000);
     expect(input.values.isNewConstruction).toBe(true);
   });
+
+  it("passes through the region when present, and leaves it undefined otherwise", () => {
+    const withRegion = toDecisionInput({
+      propertyPrice: 250_000,
+      isNewConstruction: false,
+      region: "cataluna",
+    });
+    expect(withRegion.values.region).toBe("cataluna");
+
+    const withoutRegion = toDecisionInput({ propertyPrice: 250_000, isNewConstruction: false });
+    expect(withoutRegion.values.region).toBeUndefined();
+  });
 });

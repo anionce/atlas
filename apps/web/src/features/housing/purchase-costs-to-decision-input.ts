@@ -5,6 +5,10 @@ export function toDecisionInput(answers: Record<string, unknown>): PurchaseCosts
   const values: PurchaseCostsInputValues = {
     propertyPrice: Number(answers.propertyPrice),
     isNewConstruction: Boolean(answers.isNewConstruction),
+    region:
+      typeof answers.region === "string"
+        ? (answers.region as PurchaseCostsInputValues["region"])
+        : undefined,
   };
 
   return {

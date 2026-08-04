@@ -1,5 +1,7 @@
 import type { JourneyDefinition } from "@atlas/journey-engine";
 
+import { REGION_OPTIONS } from "./region-options";
+
 export const purchaseCostsJourney: JourneyDefinition = {
   id: "purchase-costs",
   title: { es: "Gastos de compra de una vivienda" },
@@ -18,6 +20,15 @@ export const purchaseCostsJourney: JourneyDefinition = {
       required: true,
       label: { es: "¿Es vivienda nueva?" },
       help: { es: "Cambia los impuestos: IVA en obra nueva, ITP en segunda mano." },
+    },
+    {
+      id: "region",
+      type: "select",
+      required: false,
+      label: { es: "¿En qué comunidad autónoma?" },
+      help: { es: "El ITP varía por comunidad; con este dato el cálculo es más preciso." },
+      options: REGION_OPTIONS,
+      dependsOn: { stepId: "isNewConstruction", equals: false },
     },
   ],
 };

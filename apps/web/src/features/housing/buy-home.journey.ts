@@ -1,5 +1,7 @@
 import type { JourneyDefinition } from "@atlas/journey-engine";
 
+import { REGION_OPTIONS } from "./region-options";
+
 /**
  * El Journey se define mediante configuración, no código: no hay lógica
  * aquí, solo estructura (preguntas y validaciones). El cálculo vive en
@@ -63,6 +65,15 @@ export const buyHomeJourney: JourneyDefinition = {
       required: true,
       label: { es: "¿Es vivienda nueva?" },
       help: { es: "Cambia los impuestos de compra: IVA en obra nueva, ITP en segunda mano." },
+    },
+    {
+      id: "region",
+      type: "select",
+      required: false,
+      label: { es: "¿En qué comunidad autónoma?" },
+      help: { es: "El ITP varía por comunidad; con este dato el cálculo es más preciso." },
+      options: REGION_OPTIONS,
+      dependsOn: { stepId: "isNewConstruction", equals: false },
     },
   ],
 };

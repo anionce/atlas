@@ -6,12 +6,12 @@ const MAX_RECOMMENDATIONS = 3;
 export function generateRecommendations(values: PurchaseCostsInputValues): Recommendation[] {
   const candidates: Recommendation[] = [];
 
-  if (!values.isNewConstruction) {
+  if (!values.isNewConstruction && !values.region) {
     candidates.push({
       id: "check_regional_itp",
       title: "Consulta el ITP de tu comunidad autónoma",
       message:
-        "Usamos una media nacional del 7 %, pero el ITP real puede ser bastante distinto según dónde compres.",
+        "Usamos una media nacional del 7 %, pero el ITP real puede ser bastante distinto según dónde compres. Indica tu comunidad autónoma para un cálculo más preciso.",
       impact: "high",
       priority: 1,
       category: "taxes",

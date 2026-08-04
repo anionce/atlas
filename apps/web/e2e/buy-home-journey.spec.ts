@@ -27,6 +27,10 @@ test("completes the buy-home journey end to end", async ({ page }) => {
 
   await expect(page.getByText("Paso 7 de 7")).toBeVisible();
   await page.getByRole("button", { name: "No", exact: true }).click();
+  await page.getByRole("button", { name: "Continuar" }).click();
+
+  await expect(page.getByText("Paso 8 de 8")).toBeVisible();
+  await page.getByLabel("¿En qué comunidad autónoma?").selectOption("madrid");
   await page.getByRole("button", { name: "Ver resultado" }).click();
 
   await expect(page.getByText("Resumen")).toBeVisible();

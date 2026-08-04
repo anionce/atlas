@@ -1,3 +1,5 @@
+import type { SpanishRegion } from "@atlas/formula-engine";
+
 export interface BuyHomeInputValues {
   monthlyIncome: number;
   monthlyDebts?: number;
@@ -8,6 +10,8 @@ export interface BuyHomeInputValues {
   mortgageYears: number;
   isNewConstruction: boolean;
   downPaymentRatio?: number;
+  /** Comunidad Autónoma; determina el tipo de ITP real en segunda mano. */
+  region?: SpanishRegion;
 }
 
 export interface BuyHomeDecisionInput {

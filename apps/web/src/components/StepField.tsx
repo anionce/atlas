@@ -2,7 +2,7 @@
 
 import { Check, X } from "lucide-react";
 
-import { Button, Input } from "@atlas/design-system";
+import { Button, Input, Select } from "@atlas/design-system";
 import type { StepDefinition } from "@atlas/journey-engine";
 
 const NUMERIC_TYPES = new Set(["number", "currency", "percentage"]);
@@ -48,6 +48,28 @@ export function StepField({ step, value, error, onChange, locale = "es" }: StepF
           </p>
         ) : null}
       </div>
+    );
+  }
+
+  if (step.type === "select") {
+    return (
+      <Select
+        label={label}
+        help={help}
+        error={error ?? undefined}
+        value={typeof value === "string" ? value : ""}
+        onChange={(e) => onChange(e.target.value === "" ? undefined : e.target.value)}
+        autoFocus
+      >
+        <option value="" disabled>
+          Selecciona una opción
+        </option>
+        {step.options?.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label[locale] ?? option.label.es}
+          </option>
+        ))}
+      </Select>
     );
   }
 

@@ -10,6 +10,10 @@ test("completes the purchase-costs journey end to end", async ({ page }) => {
 
   await expect(page.getByText("Paso 2 de 2")).toBeVisible();
   await page.getByRole("button", { name: "No", exact: true }).click();
+  await page.getByRole("button", { name: "Continuar" }).click();
+
+  await expect(page.getByText("Paso 3 de 3")).toBeVisible();
+  await page.getByLabel("¿En qué comunidad autónoma?").selectOption("cataluna");
   await page.getByRole("button", { name: "Ver resultado" }).click();
 
   await expect(page.getByText("Resumen")).toBeVisible();

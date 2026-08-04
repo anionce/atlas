@@ -20,4 +20,14 @@ describe("generateInsights", () => {
       expect(insight.message.length).toBeGreaterThan(0);
     }
   });
+
+  it("mentions the region's actual ITP rate when a region is given", () => {
+    const insights = generateInsights({
+      propertyPrice: 250_000,
+      isNewConstruction: false,
+      region: "madrid",
+    });
+    const transferTax = insights.find((i) => i.code === "resale_transfer_tax");
+    expect(transferTax?.message).toContain("6");
+  });
 });

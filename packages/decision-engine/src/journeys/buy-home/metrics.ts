@@ -21,6 +21,7 @@ export function computeMetrics(values: BuyHomeInputValues): BuyHomeMetrics {
   const purchaseCosts = calculatePurchaseCosts({
     propertyPrice: affordability.maxPropertyPrice,
     isNewConstruction: values.isNewConstruction,
+    region: values.region,
   });
 
   return {

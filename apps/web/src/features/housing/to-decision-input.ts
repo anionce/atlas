@@ -13,6 +13,10 @@ export function toDecisionInput(answers: Record<string, unknown>): BuyHomeDecisi
     interestRate: Number(answers.interestRate),
     mortgageYears: Number(answers.mortgageYears),
     isNewConstruction: Boolean(answers.isNewConstruction),
+    region:
+      typeof answers.region === "string"
+        ? (answers.region as BuyHomeInputValues["region"])
+        : undefined,
   };
 
   return {

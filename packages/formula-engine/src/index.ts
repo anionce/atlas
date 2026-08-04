@@ -4,6 +4,9 @@ export type { MortgageInput, MortgageResult } from "./mortgage";
 export { calculatePurchaseCosts } from "./purchase-costs";
 export type { PurchaseCostsInput, PurchaseCostsBreakdown } from "./purchase-costs";
 
+export { ITP_RATE_BY_REGION, DEFAULT_ITP_RATE } from "./spanish-regions";
+export type { SpanishRegion } from "./spanish-regions";
+
 export { calculateAffordability } from "./affordability";
 export type { AffordabilityInput, AffordabilityResult } from "./affordability";
 
