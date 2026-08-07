@@ -23,12 +23,17 @@ describe("generateBreadcrumbSchema", () => {
       { name: "Comprar vivienda", path: "/comprar-vivienda" },
     ]);
     expect(schema.itemListElement).toEqual([
-      { "@type": "ListItem", position: 1, name: "Inicio", item: "https://atlas.example/" },
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Inicio",
+        item: "https://www.mirumbofinanciero.com/",
+      },
       {
         "@type": "ListItem",
         position: 2,
         name: "Comprar vivienda",
-        item: "https://atlas.example/comprar-vivienda",
+        item: "https://www.mirumbofinanciero.com/comprar-vivienda",
       },
     ]);
   });

@@ -5,4 +5,4 @@
  * cuando existan, sin tocar el resto del paquete.
  */
 export const SITE_NAME = "Atlas";
-export const SITE_URL = "https://atlas.example";
+export const SITE_URL = "https://www.mirumbofinanciero.com";

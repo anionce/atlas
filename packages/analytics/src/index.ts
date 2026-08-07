@@ -1,6 +1,7 @@
 export { configureAnalytics, getAnalyticsProvider } from "./config";
 export { NoopAnalyticsProvider } from "./providers/noop-provider";
 export { ConsoleAnalyticsProvider } from "./providers/console-provider";
+export { GtagAnalyticsProvider } from "./providers/gtag-provider";
 export type { AnalyticsEvent, AnalyticsProvider } from "./types";
 
 export {
