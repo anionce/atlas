@@ -30,12 +30,14 @@ export default function PrivacidadPage() {
 
         <div className={PROSE}>
           <h2>1. Responsable del tratamiento</h2>
+          <p>
+            Este sitio web es un proyecto personal e independiente. Para ejercer tus derechos o
+            cualquier consulta sobre el tratamiento de tus datos, puedes escribir a:
+          </p>
           <ul>
-            <li>Titular: [NOMBRE COMPLETO DEL TITULAR]</li>
-            <li>NIF: [NIF/DNI]</li>
-            <li>Domicilio: [DOMICILIO A EFECTOS DE NOTIFICACIONES]</li>
             <li>
-              Email de contacto: <a href="mailto:anionce91@gmail.com">anionce91@gmail.com</a>
+              Email de contacto:{" "}
+              <a href="mailto:hola@mirumbofinanciero.com">hola@mirumbofinanciero.com</a>
             </li>
           </ul>
 
@@ -90,8 +92,8 @@ export default function PrivacidadPage() {
           <p>
             Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación
             del tratamiento y portabilidad escribiendo a{" "}
-            <a href="mailto:anionce91@gmail.com">anionce91@gmail.com</a>. También tienes derecho a
-            presentar una reclamación ante la{" "}
+            <a href="mailto:hola@mirumbofinanciero.com">hola@mirumbofinanciero.com</a>. También
+            tienes derecho a presentar una reclamación ante la{" "}
             <a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer">
               Agencia Española de Protección de Datos (AEPD)
             </a>{" "}

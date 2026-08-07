@@ -4,7 +4,7 @@ import Link from "next/link";
 import { generateMetadata as buildSeoMetadata } from "@atlas/seo";
 
 const TITLE = "Aviso legal";
-const DESCRIPTION = "Condiciones de uso, identificación del titular y aviso legal del sitio.";
+const DESCRIPTION = "Condiciones de uso y aviso legal del sitio.";
 
 export const metadata: Metadata = buildSeoMetadata({
   title: TITLE,
@@ -29,17 +29,15 @@ export default function AvisoLegalPage() {
         <h1 className="text-foreground mt-4 mb-8 text-3xl font-semibold tracking-tight">{TITLE}</h1>
 
         <div className={PROSE}>
-          <h2>1. Identificación del titular</h2>
+          <h2>1. Titular del sitio</h2>
           <p>
-            En cumplimiento del artículo 10 de la Ley 34/2002, de Servicios de la Sociedad de la
-            Información y de Comercio Electrónico (LSSI-CE), se informa de los siguientes datos:
+            Este sitio web es un proyecto personal e independiente. Para cualquier consulta,
+            incidencia o ejercicio de derechos relacionados con el sitio, puedes escribir a:
           </p>
           <ul>
-            <li>Titular: [NOMBRE COMPLETO DEL TITULAR]</li>
-            <li>NIF: [NIF/DNI]</li>
-            <li>Domicilio: [DOMICILIO A EFECTOS DE NOTIFICACIONES]</li>
             <li>
-              Email de contacto: <a href="mailto:anionce91@gmail.com">anionce91@gmail.com</a>
+              Email de contacto:{" "}
+              <a href="mailto:hola@mirumbofinanciero.com">hola@mirumbofinanciero.com</a>
             </li>
             <li>Sitio web: www.mirumbofinanciero.com</li>
           </ul>

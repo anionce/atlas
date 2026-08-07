@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "Atlas — Toma mejores decisiones financieras",
   description:
     "Simulaciones interactivas y explicaciones claras para decisiones financieras importantes.",
+  verification: {
+    google: "DqpBfnHHz1iFABUikymhB9plxLGUMKBhVdibEGoGv-w",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
