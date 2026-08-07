@@ -31,7 +31,13 @@ export default function BlogIndexPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <main className="flex w-full max-w-[760px] flex-col items-center gap-4 text-center">
+      <div className="w-full max-w-[760px]">
+        <Link href="/" className="text-muted-foreground text-sm hover:underline">
+          ← Inicio
+        </Link>
+      </div>
+
+      <main className="mt-4 flex w-full max-w-[760px] flex-col items-center gap-4 text-center">
         <h1 className="text-foreground text-4xl leading-tight font-semibold tracking-tight text-balance sm:text-5xl">
           Blog
         </h1>
