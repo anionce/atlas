@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import { trackScenarioCompared } from "@atlas/analytics";
@@ -78,6 +79,11 @@ export function BuyHomeJourneyClient() {
 
   return (
     <div className="bg-background min-h-screen px-6 py-16">
+      <div className="mx-auto mb-6 w-full max-w-[600px]">
+        <Link href="/" className="text-muted-foreground text-sm hover:underline">
+          ← Inicio
+        </Link>
+      </div>
       <WizardScreen
         title={buyHomeJourney.title.es}
         stepLabel={`Paso ${stepNumber} de ${progress.total}`}

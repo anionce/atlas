@@ -109,6 +109,16 @@ describe("JourneyMachine", () => {
     expect(machine.getProgress()).toEqual({ current: 1, total: 2, percentage: 50 });
   });
 
+  it("progress moves back down after goBack, not just forward", () => {
+    const machine = new JourneyMachine(simpleJourney);
+    machine.setAnswer("income", 2500);
+    machine.goNext();
+    expect(machine.getProgress().current).toBe(1);
+
+    machine.goBack();
+    expect(machine.getProgress()).toEqual({ current: 0, total: 2, percentage: 0 });
+  });
+
   it("skips conditional steps that don't match the dependency", () => {
     const machine = new JourneyMachine(conditionalJourney);
     machine.setAnswer("isNewConstruction", false);

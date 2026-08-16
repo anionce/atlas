@@ -80,10 +80,24 @@ export class JourneyMachine {
     return this.definition.steps.find((step) => step.id === this.state.currentStepId);
   }
 
+  /**
+   * `current` es la posición del paso actual entre los visibles (0 = el
+   * primero). Se deriva de `currentStepId`, no de `completedSteps`: así
+   * refleja correctamente tanto avanzar como retroceder — `completedSteps`
+   * solo crece con `goNext` y nunca se recorta en `goBack`, así que usarlo
+   * aquí dejaba la barra de progreso y el "Paso X de N" congelados al
+   * volver atrás aunque el paso mostrado sí cambiara.
+   */
   getProgress(): JourneyProgress {
     const visible = this.getVisibleSteps();
     const total = visible.length;
-    const current = Math.min(this.state.completedSteps.length, total);
+    const current =
+      this.state.currentStepId === null
+        ? total
+        : Math.max(
+            0,
+            visible.findIndex((step) => step.id === this.state.currentStepId),
+          );
     return {
       current,
       total,

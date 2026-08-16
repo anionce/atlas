@@ -63,9 +63,15 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <article className="w-full max-w-[720px]">
-        <Link href="/blog" className="text-muted-foreground text-sm hover:underline">
-          ← Blog
-        </Link>
+        <nav className="flex gap-3 text-sm">
+          <Link href="/" className="text-muted-foreground hover:underline">
+            ← Inicio
+          </Link>
+          <span className="text-muted-foreground">·</span>
+          <Link href="/blog" className="text-muted-foreground hover:underline">
+            Blog
+          </Link>
+        </nav>
         <h1 className="text-foreground mt-4 text-3xl leading-tight font-semibold tracking-tight text-balance sm:text-4xl">
           {post.title}
         </h1>
