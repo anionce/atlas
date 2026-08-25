@@ -36,7 +36,10 @@ export function CookieConsentBanner() {
   }
 
   return (
-    <div className="border-border bg-background fixed inset-x-0 bottom-0 z-50 border-t px-6 py-4 shadow-lg">
+    <div
+      data-nosnippet
+      className="border-border bg-background fixed inset-x-0 bottom-0 z-50 border-t px-6 py-4 shadow-lg"
+    >
       <div className="mx-auto flex w-full max-w-[900px] flex-col items-center gap-4 sm:flex-row sm:justify-between">
         <p className="text-muted-foreground text-sm">
           Usamos cookies analíticas para entender cómo se usa el sitio y mejorarlo. Puedes
