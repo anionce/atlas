@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { getAllBlogPosts, getBlogPostBySlug } from "./posts";
+import { getAllBlogPosts, getBlogPostBySlug, getRelatedPosts } from "./posts";
 
 describe("getAllBlogPosts", () => {
   it("loads every markdown file in content/blog with its frontmatter and rendered html", () => {
@@ -30,5 +30,18 @@ describe("getBlogPostBySlug", () => {
 
   it("returns undefined for an unknown slug", () => {
     expect(getBlogPostBySlug("no-existe")).toBeUndefined();
+  });
+});
+
+describe("getRelatedPosts", () => {
+  it("returns other posts about the same tool, excluding itself", () => {
+    const post = getBlogPostBySlug("fire-independencia-financiera")!;
+    const related = getRelatedPosts(post);
+
+    expect(related.length).toBeGreaterThan(0);
+    for (const r of related) {
+      expect(r.toolHref).toBe(post.toolHref);
+      expect(r.slug).not.toBe(post.slug);
+    }
   });
 });

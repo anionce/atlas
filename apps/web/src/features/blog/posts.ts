@@ -47,3 +47,8 @@ export function getAllBlogPosts(): BlogPost[] {
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return getAllBlogPosts().find((post) => post.slug === slug);
 }
+
+/** Otros artículos sobre la misma herramienta — para enlazado interno entre posts relacionados. */
+export function getRelatedPosts(post: BlogPost): BlogPost[] {
+  return getAllBlogPosts().filter((p) => p.slug !== post.slug && p.toolHref === post.toolHref);
+}

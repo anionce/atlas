@@ -9,7 +9,7 @@ import {
 } from "@atlas/seo";
 import { Card, CardDescription, CardTitle } from "@atlas/design-system";
 
-import { getAllBlogPosts, getBlogPostBySlug } from "@/features/blog/posts";
+import { getAllBlogPosts, getBlogPostBySlug, getRelatedPosts } from "@/features/blog/posts";
 
 const PROSE_CLASSNAME =
   "[&_h2]:text-foreground [&_h2]:mt-10 [&_h2]:mb-4 [&_h2]:text-2xl [&_h2]:font-semibold " +
@@ -51,6 +51,7 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
     { name: post.title, path: `/blog/${post.slug}` },
   ]);
   const faqSchema = generateFAQSchema(post.faq);
+  const relatedPosts = getRelatedPosts(post);
 
   return (
     <div className="bg-background flex min-h-screen flex-col items-center px-6 py-24">
@@ -90,6 +91,20 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
                 <CardTitle className="text-base">{item.question}</CardTitle>
                 <CardDescription>{item.answer}</CardDescription>
               </Card>
+            ))}
+          </section>
+        ) : null}
+
+        {relatedPosts.length > 0 ? (
+          <section className="mt-8 flex flex-col gap-3">
+            <h2 className="text-foreground text-xl font-semibold">Sigue leyendo</h2>
+            {relatedPosts.map((related) => (
+              <Link key={related.slug} href={`/blog/${related.slug}`} className="group block">
+                <Card className="group-hover:border-primary/30 transition-colors">
+                  <CardTitle className="text-base">{related.title}</CardTitle>
+                  <CardDescription>{related.description}</CardDescription>
+                </Card>
+              </Link>
             ))}
           </section>
         ) : null}
