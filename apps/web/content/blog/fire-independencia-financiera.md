@@ -1,5 +1,5 @@
 ---
-title: "Qué es FIRE (independencia financiera) y cómo calcular tu número"
+title: "Qué es FIRE y cómo calcular tu número"
 description: "Descubre qué es el movimiento FIRE, cómo se calcula tu número de independencia financiera y cuánto tiempo te llevaría alcanzarlo."
 slug: "fire-independencia-financiera"
 publishedAt: "2026-08-04"

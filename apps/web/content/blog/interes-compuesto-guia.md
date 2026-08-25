@@ -1,5 +1,5 @@
 ---
-title: "Qué es el interés compuesto y cómo hacer que tu dinero trabaje solo"
+title: "Qué es el interés compuesto y cómo funciona"
 description: "Entiende el interés compuesto con ejemplos reales y calcula cuánto crecerán tus ahorros mes a mes con tu propia aportación y plazo."
 slug: "interes-compuesto-guia"
 publishedAt: "2026-08-04"
