@@ -15,6 +15,10 @@ export function generateCanonical(path: string): string {
 export function generateMetadata(config: SeoConfig): Metadata {
   const canonical = generateCanonical(config.path);
   const locale = config.locale ?? "es_ES";
+  // `opengraph-image.tsx` en app/ solo se aplica a la home: no se hereda a
+  // rutas anidadas como layout.tsx, así que cada página lo referencia aquí
+  // explícitamente para compartir la misma imagen de marca.
+  const ogImageUrl = generateCanonical("/opengraph-image");
 
   return {
     title: config.title,
@@ -27,11 +31,13 @@ export function generateMetadata(config: SeoConfig): Metadata {
       siteName: SITE_NAME,
       locale,
       type: "website",
+      images: [{ url: ogImageUrl, width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
       title: config.title,
       description: config.description,
+      images: [ogImageUrl],
     },
   };
 }

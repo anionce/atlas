@@ -5,7 +5,7 @@ import { House, PiggyBank, Receipt, TrendingUp } from "lucide-react";
 import { generateFAQSchema, generateMetadata as buildSeoMetadata } from "@atlas/seo";
 import { Card, CardDescription, CardTitle } from "@atlas/design-system";
 
-const TITLE = "Atlas — Toma mejores decisiones financieras";
+const TITLE = "Mi Rumbo Financiero — Toma mejores decisiones financieras";
 const DESCRIPTION =
   "Simulaciones interactivas y explicaciones claras para decisiones financieras importantes: comprar una vivienda, ahorrar a largo plazo, y más.";
 

@@ -13,7 +13,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Atlas — Toma mejores decisiones financieras",
+  title: "Mi Rumbo Financiero — Toma mejores decisiones financieras",
   description:
     "Simulaciones interactivas y explicaciones claras para decisiones financieras importantes.",
   verification: {
