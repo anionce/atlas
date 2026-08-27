@@ -67,4 +67,75 @@ describe("computeMetrics", () => {
     expect(metrics.monthsToFire).toBe(0);
     expect(metrics.fireNumberAfterTax).toBeCloseTo(metrics.fireNumber, 6);
   });
+
+  it("matches fireNumberAfterTax when no pension estimate is given", () => {
+    const metrics = computeMetrics(values);
+    expect(metrics.fireNumberWithPension).toBeCloseTo(metrics.fireNumberAfterTax, 6);
+  });
+
+  it("requires less capital when a public pension estimate is given and FIRE is reached well before pension age", () => {
+    const withoutPension = computeMetrics(values);
+    const withPension = computeMetrics({ ...values, monthlyPensionEstimate: 900 });
+    expect(withPension.fireNumberWithPension).toBeLessThan(withoutPension.fireNumberWithPension);
+  });
+
+  it("matches fireNumberAfterTax when FIRE is unreachable and no pension estimate is given", () => {
+    const metrics = computeMetrics({
+      ...values,
+      currentInvestments: 0,
+      monthlyContribution: 0,
+      annualReturnRate: 0,
+    });
+    expect(metrics.monthsToFire).toBeNull();
+    expect(metrics.fireNumberWithPension).toBeCloseTo(metrics.fireNumberAfterTax, 6);
+  });
+
+  it("treats an unreachable ageAtFire as if pension were already available (no bridge to size)", () => {
+    // Sin ageAtFire no hay forma de saber cuántos años quedan hasta la
+    // pensión, así que se asume que ya estaría disponible — es la
+    // aproximación más simple, no un cálculo real del puente.
+    const metrics = computeMetrics({
+      ...values,
+      currentInvestments: 0,
+      monthlyContribution: 0,
+      annualReturnRate: 0,
+      monthlyPensionEstimate: 900,
+    });
+    expect(metrics.monthsToFire).toBeNull();
+    expect(metrics.fireNumberWithPension).toBeLessThan(metrics.fireNumberAfterTax);
+  });
+
+  it("reports the pension source as 'reported' when monthlyPensionEstimate is given directly", () => {
+    const metrics = computeMetrics({ ...values, monthlyPensionEstimate: 900 });
+    expect(metrics.pensionSource).toBe("reported");
+    expect(metrics.effectiveMonthlyPension).toBe(900);
+  });
+
+  it("reports the pension source as 'none' when no pension data is given at all", () => {
+    const metrics = computeMetrics(values);
+    expect(metrics.pensionSource).toBe("none");
+    expect(metrics.effectiveMonthlyPension).toBe(0);
+  });
+
+  it("falls back to an automatic estimate when salary and years contributed are given instead", () => {
+    const metrics = computeMetrics({
+      ...values,
+      currentGrossMonthlyIncome: 2_500,
+      yearsAlreadyContributed: 10,
+    });
+    expect(metrics.pensionSource).toBe("estimated");
+    expect(metrics.effectiveMonthlyPension).toBeGreaterThan(0);
+    expect(metrics.fireNumberWithPension).toBeLessThan(metrics.fireNumberAfterTax);
+  });
+
+  it("prefers the directly reported pension over the automatic estimate when both are given", () => {
+    const metrics = computeMetrics({
+      ...values,
+      monthlyPensionEstimate: 1_200,
+      currentGrossMonthlyIncome: 2_500,
+      yearsAlreadyContributed: 10,
+    });
+    expect(metrics.pensionSource).toBe("reported");
+    expect(metrics.effectiveMonthlyPension).toBe(1_200);
+  });
 });

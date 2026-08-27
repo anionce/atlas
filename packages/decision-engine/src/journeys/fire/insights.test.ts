@@ -8,6 +8,10 @@ describe("generateInsights", () => {
     const metrics: FireMetrics = {
       fireNumber: 500_000,
       fireNumberAfterTax: 650_000,
+      fireNumberWithPension: 650_000,
+      effectiveMonthlyPension: 0,
+      pensionSource: "none",
+      reducedMonthlyExpensesAfterPension: 1_500,
       monthsToFire: null,
       ageAtFire: null,
     };
@@ -21,6 +25,10 @@ describe("generateInsights", () => {
     const metrics: FireMetrics = {
       fireNumber: 500_000,
       fireNumberAfterTax: 650_000,
+      fireNumberWithPension: 650_000,
+      effectiveMonthlyPension: 0,
+      pensionSource: "none",
+      reducedMonthlyExpensesAfterPension: 1_500,
       monthsToFire: 90,
       ageAtFire: 37.5,
     };
@@ -34,6 +42,10 @@ describe("generateInsights", () => {
     const metrics: FireMetrics = {
       fireNumber: 500_000,
       fireNumberAfterTax: 650_000,
+      fireNumberWithPension: 650_000,
+      effectiveMonthlyPension: 0,
+      pensionSource: "none",
+      reducedMonthlyExpensesAfterPension: 1_500,
       monthsToFire: 300,
       ageAtFire: 55,
     };

@@ -9,6 +9,18 @@ export function toDecisionInput(answers: Record<string, unknown>): FireDecisionI
     monthlyContribution: Number(answers.monthlyContribution),
     annualReturnRate: Number(answers.annualReturnRate),
     monthlyExpenses: Number(answers.monthlyExpenses),
+    monthlyPensionEstimate:
+      answers.monthlyPensionEstimate !== undefined
+        ? Number(answers.monthlyPensionEstimate)
+        : undefined,
+    currentGrossMonthlyIncome:
+      answers.currentGrossMonthlyIncome !== undefined
+        ? Number(answers.currentGrossMonthlyIncome)
+        : undefined,
+    yearsAlreadyContributed:
+      answers.yearsAlreadyContributed !== undefined
+        ? Number(answers.yearsAlreadyContributed)
+        : undefined,
   };
 
   return {

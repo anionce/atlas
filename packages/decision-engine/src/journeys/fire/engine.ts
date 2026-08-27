@@ -21,7 +21,7 @@ function buildSummary(metrics: FireMetrics): string {
   if (metrics.ageAtFire !== null) {
     return `Podrías alcanzar la independencia financiera aproximadamente a los ${Math.round(metrics.ageAtFire)} años.`;
   }
-  return `Con este ritmo no alcanzarías el capital necesario (${formatEuros(metrics.fireNumberAfterTax)} €) para la independencia financiera.`;
+  return `Con este ritmo no alcanzarías el capital necesario (${formatEuros(metrics.fireNumberWithPension)} €) para la independencia financiera.`;
 }
 
 /**

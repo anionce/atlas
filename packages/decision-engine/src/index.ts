@@ -18,6 +18,7 @@ export type {
   CompoundInterestMetrics,
 } from "./journeys/compound-interest/types";
 export type { FireDecisionInput, FireInputValues, FireMetrics } from "./journeys/fire/types";
+export { ASSUMED_PUBLIC_PENSION_AGE } from "./journeys/fire/metrics";
 export type {
   PurchaseCostsDecisionInput,
   PurchaseCostsInputValues,

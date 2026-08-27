@@ -65,6 +65,44 @@ export function validateFireInput(values: FireInputValues): void {
     });
   }
 
+  if (
+    values.monthlyPensionEstimate !== undefined &&
+    (!Number.isFinite(values.monthlyPensionEstimate) || values.monthlyPensionEstimate < 0)
+  ) {
+    errors.push({
+      code: "negative_monthly_pension_estimate",
+      field: "monthlyPensionEstimate",
+      severity: "error",
+      message: "La estimación de pensión pública no puede ser negativa.",
+    });
+  }
+
+  if (
+    values.currentGrossMonthlyIncome !== undefined &&
+    (!Number.isFinite(values.currentGrossMonthlyIncome) || values.currentGrossMonthlyIncome < 0)
+  ) {
+    errors.push({
+      code: "negative_current_gross_monthly_income",
+      field: "currentGrossMonthlyIncome",
+      severity: "error",
+      message: "El salario bruto mensual no puede ser negativo.",
+    });
+  }
+
+  if (
+    values.yearsAlreadyContributed !== undefined &&
+    (!Number.isFinite(values.yearsAlreadyContributed) ||
+      values.yearsAlreadyContributed < 0 ||
+      values.yearsAlreadyContributed > 60)
+  ) {
+    errors.push({
+      code: "invalid_years_already_contributed",
+      field: "yearsAlreadyContributed",
+      severity: "error",
+      message: "Los años cotizados deben estar entre 0 y 60.",
+    });
+  }
+
   if (errors.length > 0) {
     throw new DecisionValidationError(errors);
   }
