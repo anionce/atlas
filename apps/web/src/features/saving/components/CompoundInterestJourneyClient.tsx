@@ -55,6 +55,11 @@ export function CompoundInterestJourneyClient() {
   if (isComplete && result?.data) {
     return (
       <div className="bg-background min-h-screen px-6 py-16">
+        <div className="mx-auto mb-6 w-full max-w-[900px]">
+          <Link href="/" className="text-muted-foreground text-sm hover:underline">
+            ← Inicio
+          </Link>
+        </div>
         <ResultScreen result={result.data} onRestart={handleRestart} />
       </div>
     );
@@ -65,6 +70,9 @@ export function CompoundInterestJourneyClient() {
       <div className="mx-auto flex min-h-screen max-w-[600px] flex-col items-center justify-center gap-4 px-6 text-center">
         <p className="text-foreground text-lg">No hemos podido calcular tu resultado.</p>
         <p className="text-muted-foreground text-sm">{result.error}</p>
+        <Link href="/" className="text-primary text-sm hover:underline">
+          ← Volver al inicio
+        </Link>
       </div>
     );
   }
