@@ -38,3 +38,15 @@ export type { CoastFireInput, CoastFireResult } from "./coast-fire";
 
 export { calculateSavingsRate } from "./savings-rate";
 export type { SavingsRateInput, SavingsRateResult } from "./savings-rate";
+
+export { US_HISTORICAL_MARKET_RETURNS } from "./historical-market-data";
+export type { HistoricalMarketYear } from "./historical-market-data";
+
+export { calculateHistoricalBacktest, constantDollarStrategy } from "./historical-backtest";
+export type {
+  HistoricalBacktestInput,
+  HistoricalBacktestResult,
+  HistoricalSimulationResult,
+  WithdrawalStrategy,
+  WithdrawalStrategyContext,
+} from "./historical-backtest";
