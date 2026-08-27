@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { House, PiggyBank, Receipt, TrendingUp } from "lucide-react";
+import { House, PiggyBank, Receipt, TrendingUp, Wallet } from "lucide-react";
 
 import { generateFAQSchema, generateMetadata as buildSeoMetadata } from "@atlas/seo";
 import { Card, CardDescription, CardTitle } from "@atlas/design-system";
@@ -39,6 +39,13 @@ const tools = [
     title: "Gastos de compra de vivienda",
     description: "Cuánto pagarías en ITP o IVA, notaría, registro y tasación.",
     icon: Receipt,
+  },
+  {
+    href: "/tasa-de-ahorro",
+    title: "Tasa de ahorro",
+    description:
+      "Qué porcentaje de tus ingresos ahorras, y cuánto tardarías en ser libre a ese ritmo.",
+    icon: Wallet,
   },
 ];
 

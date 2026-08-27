@@ -3,9 +3,9 @@ title: "Cómo calcular tu tasa de ahorro real (y por qué importa más que tu su
 description: "Aprende a calcular tu tasa de ahorro real, por qué es la métrica clave para FIRE, y cómo subirla sin depender solo de ganar más."
 slug: "como-calcular-tasa-de-ahorro"
 publishedAt: "2026-08-04"
-toolHref: "/fire"
-toolLabel: "calculadora FIRE"
-ctaText: "Tu tasa de ahorro es, junto con la rentabilidad de tus inversiones, la variable que más determina cuánto tiempo te llevaría alcanzar la independencia financiera. Usa la calculadora FIRE para ver tu número FIRE real y el tiempo estimado según tu tasa de ahorro actual."
+toolHref: "/tasa-de-ahorro"
+toolLabel: "calculadora de tasa de ahorro"
+ctaText: "Tu tasa de ahorro es, junto con la rentabilidad de tus inversiones, la variable que más determina cuánto tiempo te llevaría alcanzar la independencia financiera. Usa la calculadora de tasa de ahorro para calcular la tuya y ver cuánto tardarías a ese ritmo."
 faq:
   - question: "¿Qué tasa de ahorro es buena?"
     answer: "No hay un número universal correcto — depende de tus objetivos, tu edad y tu situación. Como referencia, una tasa del 15-20 % es razonable para una jubilación tradicional; el movimiento FIRE suele apuntar a un 40-70 % para acortar el plazo de forma significativa, aunque no es alcanzable ni deseable para todo el mundo."

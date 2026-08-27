@@ -10,6 +10,7 @@ const routes = [
   { path: "/gastos-compra-vivienda", priority: 0.9 },
   { path: "/interes-compuesto", priority: 0.9 },
   { path: "/fire", priority: 0.9 },
+  { path: "/tasa-de-ahorro", priority: 0.9 },
   { path: "/blog", priority: 0.7 },
 ];
 

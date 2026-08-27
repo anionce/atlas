@@ -18,5 +18,8 @@ export type { GrowthRulesInput } from "./growth-rules";
 export { evaluateFireRules } from "./fire-rules";
 export type { FireRulesInput } from "./fire-rules";
 
+export { evaluateSavingsRateRules } from "./savings-rate-rules";
+export type { SavingsRateRulesInput } from "./savings-rate-rules";
+
 export { evaluatePurchaseCostsRules } from "./purchase-costs-rules";
 export type { PurchaseCostsRulesInput } from "./purchase-costs-rules";

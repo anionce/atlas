@@ -12,6 +12,8 @@ import type {
   PurchaseCostsDecisionInput,
   PurchaseCostsMetrics,
 } from "./journeys/purchase-costs/types";
+import { evaluateSavingsRate } from "./journeys/savings-rate/engine";
+import type { SavingsRateDecisionInput, SavingsRateMetrics } from "./journeys/savings-rate/types";
 import type { DecisionInput } from "./types";
 import type { DecisionResult } from "./shared-types";
 
@@ -23,6 +25,9 @@ export function evaluateDecision(input: FireDecisionInput): DecisionResult<FireM
 export function evaluateDecision(
   input: PurchaseCostsDecisionInput,
 ): DecisionResult<PurchaseCostsMetrics>;
+export function evaluateDecision(
+  input: SavingsRateDecisionInput,
+): DecisionResult<SavingsRateMetrics>;
 /**
  * Único punto de entrada público del Decision Engine, sea cual sea el
  * Journey. Solo hace dispatch por `journeyId`: toda la lógica vive en el
@@ -34,7 +39,8 @@ export function evaluateDecision(
   | DecisionResult<BuyHomeMetrics>
   | DecisionResult<CompoundInterestMetrics>
   | DecisionResult<FireMetrics>
-  | DecisionResult<PurchaseCostsMetrics> {
+  | DecisionResult<PurchaseCostsMetrics>
+  | DecisionResult<SavingsRateMetrics> {
   switch (input.journeyId) {
     case "buy-home":
       return evaluateBuyHome(input);
@@ -44,5 +50,7 @@ export function evaluateDecision(
       return evaluateFire(input);
     case "purchase-costs":
       return evaluatePurchaseCosts(input);
+    case "savings-rate":
+      return evaluateSavingsRate(input);
   }
 }

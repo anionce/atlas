@@ -5,6 +5,7 @@ export { compareScenarios as compareBuyHomeScenarios } from "./journeys/buy-home
 export { compareScenarios as compareCompoundInterestScenarios } from "./journeys/compound-interest/scenarios";
 export { compareScenarios as compareFireScenarios } from "./journeys/fire/scenarios";
 export { compareScenarios as comparePurchaseCostsScenarios } from "./journeys/purchase-costs/scenarios";
+export { compareScenarios as compareSavingsRateScenarios } from "./journeys/savings-rate/scenarios";
 
 export type { DecisionInput } from "./types";
 export type {
@@ -24,6 +25,11 @@ export type {
   PurchaseCostsInputValues,
   PurchaseCostsMetrics,
 } from "./journeys/purchase-costs/types";
+export type {
+  SavingsRateDecisionInput,
+  SavingsRateInputValues,
+  SavingsRateMetrics,
+} from "./journeys/savings-rate/types";
 
 export type {
   DecisionResult,

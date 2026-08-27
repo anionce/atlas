@@ -35,3 +35,6 @@ export type { SpanishPensionEstimateInput } from "./spanish-pension-estimate";
 
 export { calculateCoastFire } from "./coast-fire";
 export type { CoastFireInput, CoastFireResult } from "./coast-fire";
+
+export { calculateSavingsRate } from "./savings-rate";
+export type { SavingsRateInput, SavingsRateResult } from "./savings-rate";
