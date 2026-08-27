@@ -22,11 +22,20 @@ export type SpanishRegion =
 /**
  * Tipo general de ITP para vivienda usada, por Comunidad Autónoma.
  *
- * Cada región tiene además tipos reducidos según el perfil del comprador
- * (jóvenes, familia numerosa, VPO...) que este modelo no contempla: es el
- * tipo general, no el que pagaría cada comprador concreto. Contrastado
- * contra dos fuentes independientes en 2026; revisar periódicamente, ya
- * que cada Comunidad puede cambiarlo por ley autonómica.
+ * Dos simplificaciones reales, no solo "tipos reducidos que no contemplamos":
+ *
+ * 1. Cada región tiene además tipos reducidos según el perfil del comprador
+ *    (jóvenes, familia numerosa, VPO...); este modelo usa el tipo general,
+ *    no el que pagaría cada comprador concreto.
+ * 2. Varias comunidades (Cataluña, Comunidad Valenciana, Asturias, entre
+ *    otras) no tienen un tipo único sino tramos progresivos según el precio
+ *    de la vivienda — aquí se usa el tipo del primer tramo (el más bajo),
+ *    así que para viviendas caras en esas comunidades el ITP real puede ser
+ *    más alto que el que muestra la calculadora.
+ *
+ * Última verificación: agosto 2026 (corregido el tipo de Murcia, que bajó
+ * de 8 % a 7,75 % en julio de 2025 por la Ley 3/2025). Revisar
+ * periódicamente: cada Comunidad puede cambiarlo por ley autonómica.
  *
  * Para obra nueva seguimos usando el IVA nacional (10 %), que es uniforme
  * salvo en Canarias (IGIC) y los regímenes forales — esa excepción no está
@@ -46,7 +55,7 @@ export const ITP_RATE_BY_REGION: Record<SpanishRegion, number> = {
   extremadura: 0.08,
   galicia: 0.08,
   madrid: 0.06,
-  murcia: 0.08,
+  murcia: 0.0775,
   navarra: 0.06,
   "pais-vasco": 0.04,
   "la-rioja": 0.07,
