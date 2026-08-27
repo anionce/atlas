@@ -9,8 +9,12 @@ export interface WithdrawalStrategyContext {
   yearIndex: number;
   /** Inflación del año anterior, en %. `0` en el primer año (no hay año anterior). */
   previousYearInflationPct: number;
+  /** Rentabilidad de la cartera (mezcla acciones/bonos) del año anterior, en %. `0` en el primer año. */
+  previousYearPortfolioReturnPct: number;
   /** Retirada inicial tal como la configuró quien simula (año 0). */
   initialWithdrawal: number;
+  /** Balance de la cartera al empezar la simulación (año 0, antes de la primera retirada). */
+  initialPortfolioBalance: number;
 }
 
 /**
@@ -94,6 +98,7 @@ export function calculateHistoricalBacktest(
     let balance = initialPortfolio;
     let withdrawal = 0;
     let depletedAtYearIndex: number | null = null;
+    let previousYearReturnPct = 0;
 
     for (let yearIndex = 0; yearIndex < years; yearIndex++) {
       const yearData = dataset[startIndex + yearIndex];
@@ -105,11 +110,18 @@ export function calculateHistoricalBacktest(
         yearIndex,
         previousYearInflationPct:
           yearIndex === 0 ? 0 : (dataset[startIndex + yearIndex - 1]?.inflationPct ?? 0),
+        previousYearPortfolioReturnPct: previousYearReturnPct,
         initialWithdrawal: initialAnnualWithdrawal,
+        initialPortfolioBalance: initialPortfolio,
       });
 
       balance -= withdrawal;
-      if (balance <= 0) {
+      // Negativo: la cartera no llegó a cubrir la retirada, fracaso claro.
+      // Exactamente cero: solo es fracaso si queda algún año más por
+      // delante — estrategias como 1/N o VPW retiran a propósito el saldo
+      // completo en el último año, y eso es un éxito (llegar justo a
+      // cero al final), no un fallo.
+      if (balance < 0 || (balance === 0 && yearIndex < years - 1)) {
         balance = 0;
         depletedAtYearIndex = yearIndex;
         break;
@@ -119,6 +131,7 @@ export function calculateHistoricalBacktest(
         (stockAllocationPct / 100) * yearData.stockReturnPct +
         (1 - stockAllocationPct / 100) * yearData.bondReturnPct;
       balance = balance * (1 + blendedReturnPct / 100);
+      previousYearReturnPct = blendedReturnPct;
     }
 
     const firstYear = dataset[startIndex];

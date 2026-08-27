@@ -50,3 +50,10 @@ export type {
   WithdrawalStrategy,
   WithdrawalStrategyContext,
 } from "./historical-backtest";
+
+export {
+  createGuytonKlingerStrategy,
+  createOneOverNStrategy,
+  createPercentOfPortfolioStrategy,
+  createVpwStrategy,
+} from "./withdrawal-strategies";

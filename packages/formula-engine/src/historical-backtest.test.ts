@@ -162,7 +162,9 @@ describe("constantDollarStrategy", () => {
       previousWithdrawal: 0,
       yearIndex: 0,
       previousYearInflationPct: 0,
+      previousYearPortfolioReturnPct: 0,
       initialWithdrawal: 40,
+      initialPortfolioBalance: 1_000,
     });
     expect(withdrawal).toBe(40);
   });
@@ -173,7 +175,9 @@ describe("constantDollarStrategy", () => {
       previousWithdrawal: 40,
       yearIndex: 1,
       previousYearInflationPct: 5,
+      previousYearPortfolioReturnPct: 8,
       initialWithdrawal: 40,
+      initialPortfolioBalance: 1_000,
     });
     expect(withdrawal).toBeCloseTo(42, 6);
   });
