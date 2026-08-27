@@ -1,11 +1,83 @@
 "use client";
 
+import { useState } from "react";
 import { Check, X } from "lucide-react";
 
 import { Button, Input, Select } from "@atlas/design-system";
 import type { StepDefinition } from "@atlas/journey-engine";
 
 const NUMERIC_TYPES = new Set(["number", "currency", "percentage"]);
+
+/**
+ * Convierte lo que se ha tecleado en un número, o `undefined` si todavía
+ * no hay nada válido. No usamos `<input type="number">` para estos campos:
+ * su validación nativa carácter a carácter borra el campo entero en
+ * cuanto se teclea un punto en un estado intermedio (p. ej. "100." antes
+ * de seguir escribiendo) — un problema real para quien teclea números
+ * grandes con el punto como separador de miles, como es costumbre en
+ * español.
+ */
+function parseNumericValue(stepType: string, raw: string): number | undefined {
+  const trimmed = raw.trim();
+  if (trimmed === "" || trimmed === "-") return undefined;
+
+  if (stepType === "percentage") {
+    // Los porcentajes de esta app son siempre números pequeños (0-100):
+    // no necesitan separador de miles, así que el punto o la coma se
+    // tratan como separador decimal.
+    const parsed = Number(trimmed.replace(",", "."));
+    return Number.isNaN(parsed) ? undefined : parsed;
+  }
+
+  // "currency" y "number": aquí nunca hacen falta decimales (euros
+  // enteros, años enteros) — un punto o una coma solo puede ser un
+  // separador de miles tecleado por costumbre, nunca un decimal real.
+  const digitsOnly = trimmed.replace(/[.,\s]/g, "");
+  if (digitsOnly === "" || digitsOnly === "-") return undefined;
+  const parsed = Number(digitsOnly);
+  return Number.isNaN(parsed) ? undefined : parsed;
+}
+
+/**
+ * El texto que se ve mientras se escribe vive en estado local, separado
+ * del número ya calculado — así "100." o "6." pueden mostrarse un
+ * instante sin que se borren solos en cada tecla. `key={step.id}` en
+ * quien la usa reinicia este estado al cambiar de pregunta.
+ */
+function NumericStepInput({
+  step,
+  value,
+  label,
+  help,
+  error,
+  onChange,
+}: {
+  step: StepDefinition;
+  value: unknown;
+  label: string;
+  help?: string;
+  error: string | null;
+  onChange: (value: unknown) => void;
+}) {
+  const [text, setText] = useState(() => (typeof value === "number" ? String(value) : ""));
+
+  return (
+    <Input
+      type="text"
+      inputMode="decimal"
+      label={label}
+      help={help}
+      error={error ?? undefined}
+      value={text}
+      onChange={(e) => {
+        const raw = e.target.value;
+        setText(raw);
+        onChange(parseNumericValue(step.type, raw));
+      }}
+      autoFocus
+    />
+  );
+}
 
 export interface StepFieldProps {
   step: StepDefinition;
@@ -75,18 +147,14 @@ export function StepField({ step, value, error, onChange, locale = "es" }: StepF
 
   if (NUMERIC_TYPES.has(step.type)) {
     return (
-      <Input
-        type="number"
-        inputMode="decimal"
+      <NumericStepInput
+        key={step.id}
+        step={step}
+        value={value}
         label={label}
         help={help}
-        error={error ?? undefined}
-        value={typeof value === "number" ? value : ""}
-        onChange={(e) => {
-          const raw = e.target.value;
-          onChange(raw === "" ? undefined : Number(raw));
-        }}
-        autoFocus
+        error={error}
+        onChange={onChange}
       />
     );
   }
