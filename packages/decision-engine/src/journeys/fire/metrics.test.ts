@@ -44,4 +44,27 @@ describe("computeMetrics", () => {
     const withZero = computeMetrics({ ...values, currentInvestments: 0 });
     expect(withoutInitial.monthsToFire).toBe(withZero.monthsToFire);
   });
+
+  it("requires more capital after tax than the untaxed fireNumber, when FIRE is reachable", () => {
+    const metrics = computeMetrics(values);
+    expect(metrics.monthsToFire).not.toBeNull();
+    expect(metrics.fireNumberAfterTax).toBeGreaterThan(metrics.fireNumber);
+  });
+
+  it("falls back to the untaxed number when FIRE is unreachable (no gain fraction to compute)", () => {
+    const metrics = computeMetrics({
+      ...values,
+      currentInvestments: 0,
+      monthlyContribution: 0,
+      annualReturnRate: 0,
+    });
+    expect(metrics.monthsToFire).toBeNull();
+    expect(metrics.fireNumberAfterTax).toBeCloseTo(metrics.fireNumber, 6);
+  });
+
+  it("needs no tax adjustment when already at the goal (100% contributed, 0% gain)", () => {
+    const metrics = computeMetrics({ ...values, currentInvestments: 1_500 * 12 * 25 });
+    expect(metrics.monthsToFire).toBe(0);
+    expect(metrics.fireNumberAfterTax).toBeCloseTo(metrics.fireNumber, 6);
+  });
 });

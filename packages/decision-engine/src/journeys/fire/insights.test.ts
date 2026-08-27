@@ -5,7 +5,12 @@ import type { FireMetrics } from "./types";
 
 describe("generateInsights", () => {
   it("warns when FIRE is unreachable", () => {
-    const metrics: FireMetrics = { fireNumber: 500_000, monthsToFire: null, ageAtFire: null };
+    const metrics: FireMetrics = {
+      fireNumber: 500_000,
+      fireNumberAfterTax: 650_000,
+      monthsToFire: null,
+      ageAtFire: null,
+    };
     const insights = generateInsights(metrics);
     const warning = insights.find((i) => i.code === "fire_unreachable");
     expect(warning?.severity).toBe("warning");
@@ -13,7 +18,12 @@ describe("generateInsights", () => {
   });
 
   it("celebrates reaching FIRE within a decade", () => {
-    const metrics: FireMetrics = { fireNumber: 500_000, monthsToFire: 90, ageAtFire: 37.5 };
+    const metrics: FireMetrics = {
+      fireNumber: 500_000,
+      fireNumberAfterTax: 650_000,
+      monthsToFire: 90,
+      ageAtFire: 37.5,
+    };
     const insights = generateInsights(metrics);
     expect(insights.some((i) => i.code === "fire_within_decade" && i.severity === "success")).toBe(
       true,
@@ -21,7 +31,12 @@ describe("generateInsights", () => {
   });
 
   it("says nothing for a long but reachable horizon", () => {
-    const metrics: FireMetrics = { fireNumber: 500_000, monthsToFire: 300, ageAtFire: 55 };
+    const metrics: FireMetrics = {
+      fireNumber: 500_000,
+      fireNumberAfterTax: 650_000,
+      monthsToFire: 300,
+      ageAtFire: 55,
+    };
     expect(generateInsights(metrics)).toEqual([]);
   });
 });

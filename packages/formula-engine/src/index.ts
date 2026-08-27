@@ -13,5 +13,11 @@ export type { AffordabilityInput, AffordabilityResult } from "./affordability";
 export { calculateCompoundInterest, monthsToReachGoal } from "./compound-interest";
 export type { CompoundInterestInput, CompoundInterestResult } from "./compound-interest";
 
-export { calculateFireNumber } from "./fire";
-export type { FireNumberInput } from "./fire";
+export { calculateFireNumber, calculateFireNumberAfterTax } from "./fire";
+export type { FireNumberInput, FireNumberAfterTaxInput } from "./fire";
+
+export {
+  calculateSpanishSavingsTax,
+  SPANISH_SAVINGS_TAX_BRACKETS_2026,
+} from "./spanish-savings-tax";
+export type { SavingsTaxBracket } from "./spanish-savings-tax";

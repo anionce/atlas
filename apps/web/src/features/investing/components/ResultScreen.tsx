@@ -27,7 +27,7 @@ export interface ResultScreenProps {
 }
 
 export function ResultScreen({ result, onRestart }: ResultScreenProps) {
-  const { monthsToFire, ageAtFire, fireNumber } = result.metrics;
+  const { monthsToFire, ageAtFire, fireNumber, fireNumberAfterTax } = result.metrics;
   const reachable = monthsToFire !== null && ageAtFire !== null;
 
   return (
@@ -35,7 +35,7 @@ export function ResultScreen({ result, onRestart }: ResultScreenProps) {
       <Card className="bg-primary text-primary-foreground rounded-3xl">
         <CardDescription className="text-primary-foreground/80">Resumen</CardDescription>
         <CardValue className="text-4xl">
-          {reachable ? `${Math.round(ageAtFire)} años` : formatEuros(fireNumber)}
+          {reachable ? `${Math.round(ageAtFire)} años` : formatEuros(fireNumberAfterTax)}
         </CardValue>
         <p className="mt-2 text-lg">{result.summary}</p>
       </Card>
@@ -43,7 +43,11 @@ export function ResultScreen({ result, onRestart }: ResultScreenProps) {
       <div className={`grid grid-cols-1 gap-4 ${reachable ? "sm:grid-cols-2" : "sm:grid-cols-1"}`}>
         <Card>
           <CardDescription>Capital necesario para vivir de las rentas</CardDescription>
-          <CardValue className="text-2xl">{formatEuros(fireNumber)}</CardValue>
+          <CardValue className="text-2xl">{formatEuros(fireNumberAfterTax)}</CardValue>
+          <CardDescription className="mt-2 text-sm">
+            Estimación con el IRPF español sobre la parte de ganancia de cada retirada ya
+            descontado. Sin contar impuestos: {formatEuros(fireNumber)}.
+          </CardDescription>
         </Card>
         {reachable ? (
           <Card>
@@ -112,7 +116,7 @@ export function ResultScreen({ result, onRestart }: ResultScreenProps) {
               {result.comparison.scenarios.map((scenario) => (
                 <tr key={scenario.id} className="border-border border-t">
                   <td className="text-foreground px-4 py-3 font-medium">{scenario.label}</td>
-                  <td className="px-4 py-3">{formatEuros(scenario.metrics.fireNumber)}</td>
+                  <td className="px-4 py-3">{formatEuros(scenario.metrics.fireNumberAfterTax)}</td>
                   <td className="px-4 py-3">
                     {scenario.metrics.monthsToFire !== null
                       ? formatYears(scenario.metrics.monthsToFire)
