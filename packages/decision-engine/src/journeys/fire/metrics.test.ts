@@ -138,4 +138,18 @@ describe("computeMetrics", () => {
     expect(metrics.pensionSource).toBe("reported");
     expect(metrics.effectiveMonthlyPension).toBe(1_200);
   });
+
+  it("computes a coast FIRE age between the current age and the legal retirement age when reachable", () => {
+    const metrics = computeMetrics(values);
+    expect(metrics.alreadyCoasting).toBe(false);
+    expect(metrics.coastFireAge).not.toBeNull();
+    expect(metrics.coastFireAge as number).toBeGreaterThan(values.currentAge);
+    expect(metrics.coastFireAge as number).toBeLessThan(67);
+  });
+
+  it("reports already coasting when current investments already cover the discounted coast FIRE number", () => {
+    const metrics = computeMetrics({ ...values, currentInvestments: 10_000_000 });
+    expect(metrics.alreadyCoasting).toBe(true);
+    expect(metrics.coastFireAge).toBe(values.currentAge);
+  });
 });

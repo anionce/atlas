@@ -12,9 +12,23 @@ const values: FireInputValues = {
 };
 
 describe("compareScenarios", () => {
-  it("always includes the current plan and an extra-contribution scenario", () => {
+  it("always includes the current plan, extra-contribution, and lean/fat FIRE scenarios", () => {
     const { scenarios } = compareScenarios(values);
-    expect(scenarios.map((s) => s.id)).toEqual(["current-plan", "extra-contribution"]);
+    expect(scenarios.map((s) => s.id)).toEqual([
+      "current-plan",
+      "extra-contribution",
+      "lean-fire",
+      "fat-fire",
+    ]);
+  });
+
+  it("lean FIRE needs less capital and fat FIRE needs more than the current plan", () => {
+    const { scenarios } = compareScenarios(values);
+    const current = scenarios.find((s) => s.id === "current-plan")!;
+    const lean = scenarios.find((s) => s.id === "lean-fire")!;
+    const fat = scenarios.find((s) => s.id === "fat-fire")!;
+    expect(lean.metrics.fireNumberAfterTax).toBeLessThan(current.metrics.fireNumberAfterTax);
+    expect(fat.metrics.fireNumberAfterTax).toBeGreaterThan(current.metrics.fireNumberAfterTax);
   });
 
   it("contributing more never delays reaching FIRE", () => {

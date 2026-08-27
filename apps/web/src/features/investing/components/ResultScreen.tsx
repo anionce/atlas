@@ -37,6 +37,9 @@ export function ResultScreen({ result, onRestart }: ResultScreenProps) {
     effectiveMonthlyPension,
     pensionSource,
     reducedMonthlyExpensesAfterPension,
+    coastFireNumberToday,
+    alreadyCoasting,
+    coastFireAge,
   } = result.metrics;
   const reachable = monthsToFire !== null && ageAtFire !== null;
   const pensionApplied = pensionSource !== "none";
@@ -77,6 +80,33 @@ export function ResultScreen({ result, onRestart }: ResultScreenProps) {
           </Card>
         ) : null}
       </div>
+
+      <Card className="border-primary/30 bg-primary/5">
+        <CardTitle className="text-base">Coast FIRE</CardTitle>
+        <CardDescription className="mt-2 text-sm leading-relaxed">
+          {alreadyCoasting ? (
+            <>
+              Ya has alcanzado tu Coast FIRE: aunque no aportaras ni un euro más a partir de hoy, el
+              crecimiento de lo que ya tienes invertido bastaría por sí solo para llegar a tu número
+              FIRE ({formatEuros(fireNumberAfterTax)}) para los {ASSUMED_PUBLIC_PENSION_AGE} años.
+            </>
+          ) : coastFireAge !== null ? (
+            <>
+              Podrías alcanzar tu Coast FIRE a los {Math.round(coastFireAge)} años: a partir de esa
+              edad, si dejaras de aportar, el crecimiento por sí solo te llevaría a tu número FIRE
+              para los {ASSUMED_PUBLIC_PENSION_AGE} años. Para poder parar de aportar ya mismo,
+              necesitarías tener invertidos hoy {formatEuros(coastFireNumberToday)}.
+            </>
+          ) : (
+            <>
+              Al ritmo actual no llegarías a poder dejar de aportar antes de los{" "}
+              {ASSUMED_PUBLIC_PENSION_AGE} años — seguirías necesitando aportar hasta entonces.
+            </>
+          )}{" "}
+          Es un concepto distinto de la edad FIRE: no es cuándo puedes dejar de trabajar del todo,
+          sino cuándo puedes dejar de <em>ahorrar</em>, aunque sigas trabajando por otros motivos.
+        </CardDescription>
+      </Card>
 
       {pensionApplied ? (
         <Card className="border-primary/30 bg-primary/5">
@@ -182,11 +212,16 @@ export function ResultScreen({ result, onRestart }: ResultScreenProps) {
           </table>
         </div>
         <p className="text-muted-foreground text-sm">{result.comparison.explanation}</p>
+        <p className="text-muted-foreground text-sm">
+          Lean FIRE y Fat FIRE no cambian tu plan de aportación — muestran cuánto haría falta si tu
+          gasto en la jubilación fuera un 30 % más ajustado o un 50 % más holgado que el que nos
+          diste, para que veas el rango completo.
+        </p>
         {pensionApplied ? (
           <p className="text-muted-foreground text-sm">
-            Esta tabla no descuenta tu pensión pública (solo el IRPF): al cambiar de plan también
-            cambian los años que trabajas y, con ellos, la pensión estimada, así que aquí comparamos
-            solo el efecto de aportar más.
+            Ninguna fila de esta tabla descuenta tu pensión pública (solo el IRPF): al cambiar de
+            plan también cambian los años que trabajas y, con ellos, la pensión estimada, así que
+            aquí comparamos solo el efecto de cada palanca por separado.
           </p>
         ) : null}
       </section>

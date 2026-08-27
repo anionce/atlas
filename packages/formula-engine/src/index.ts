@@ -32,3 +32,6 @@ export {
   SPANISH_GENERAL_TAX_BRACKETS_APPROX_2026,
 } from "./spanish-pension-estimate";
 export type { SpanishPensionEstimateInput } from "./spanish-pension-estimate";
+
+export { calculateCoastFire } from "./coast-fire";
+export type { CoastFireInput, CoastFireResult } from "./coast-fire";

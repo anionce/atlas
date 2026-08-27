@@ -12,6 +12,9 @@ describe("generateInsights", () => {
       effectiveMonthlyPension: 0,
       pensionSource: "none",
       reducedMonthlyExpensesAfterPension: 1_500,
+      coastFireNumberToday: 100_000,
+      alreadyCoasting: false,
+      coastFireAge: 50,
       monthsToFire: null,
       ageAtFire: null,
     };
@@ -29,6 +32,9 @@ describe("generateInsights", () => {
       effectiveMonthlyPension: 0,
       pensionSource: "none",
       reducedMonthlyExpensesAfterPension: 1_500,
+      coastFireNumberToday: 100_000,
+      alreadyCoasting: false,
+      coastFireAge: 50,
       monthsToFire: 90,
       ageAtFire: 37.5,
     };
@@ -46,6 +52,9 @@ describe("generateInsights", () => {
       effectiveMonthlyPension: 0,
       pensionSource: "none",
       reducedMonthlyExpensesAfterPension: 1_500,
+      coastFireNumberToday: 100_000,
+      alreadyCoasting: false,
+      coastFireAge: 50,
       monthsToFire: 300,
       ageAtFire: 55,
     };

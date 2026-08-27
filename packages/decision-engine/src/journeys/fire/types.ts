@@ -69,4 +69,19 @@ export interface FireMetrics {
   /** `null` si, al ritmo actual, nunca se alcanza. */
   monthsToFire: number | null;
   ageAtFire: number | null;
+  /**
+   * Cuánto necesitarías tener invertido HOY para, sin aportar ni un euro
+   * más, llegar solo por crecimiento a `fireNumberAfterTax` para la edad
+   * legal de jubilación (`ASSUMED_PUBLIC_PENSION_AGE`).
+   */
+  coastFireNumberToday: number;
+  /** Si ya tienes invertido hoy lo suficiente como para parar de aportar ahora mismo (Coast FIRE). */
+  alreadyCoasting: boolean;
+  /**
+   * Edad a la que, aportando al ritmo actual hasta entonces, podrías parar
+   * de aportar y aun así llegar a tu número FIRE solo con el crecimiento.
+   * `null` si, al ritmo actual, no se alcanza antes de la edad legal de
+   * jubilación.
+   */
+  coastFireAge: number | null;
 }

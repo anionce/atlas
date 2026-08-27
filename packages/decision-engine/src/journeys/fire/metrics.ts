@@ -1,4 +1,5 @@
 import {
+  calculateCoastFire,
   calculateCompoundInterest,
   calculateFireNumber,
   calculateFireNumberAfterTax,
@@ -108,6 +109,15 @@ export function computeMetrics(values: FireInputValues): FireMetrics {
     annualReturnRatePct: values.annualReturnRate,
   });
 
+  const coastFire = calculateCoastFire({
+    fireNumber: fireNumberAfterTax,
+    currentInvestments,
+    monthlyContribution: values.monthlyContribution,
+    annualReturnRatePct: values.annualReturnRate,
+    currentAge: values.currentAge,
+    targetAge: ASSUMED_PUBLIC_PENSION_AGE,
+  });
+
   return {
     fireNumber,
     fireNumberAfterTax,
@@ -117,5 +127,8 @@ export function computeMetrics(values: FireInputValues): FireMetrics {
     reducedMonthlyExpensesAfterPension: Math.max(0, values.monthlyExpenses - pension.amount),
     monthsToFire,
     ageAtFire,
+    coastFireNumberToday: coastFire.coastFireNumberToday,
+    alreadyCoasting: coastFire.alreadyCoasting,
+    coastFireAge: coastFire.coastFireAge,
   };
 }

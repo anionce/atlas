@@ -4,6 +4,17 @@ import type { FireInputValues, FireMetrics } from "./types";
 
 const EXTRA_MONTHLY_CONTRIBUTION = 100;
 
+/**
+ * Multiplicadores convencionales de la comunidad FIRE para las tres
+ * "tallas" del número: Lean (ajustado), Pleno (tu gasto tal cual lo diste)
+ * y Fat (con holgura). No son una definición oficial ni universal — otras
+ * calculadoras usan cifras algo distintas —, pero sirven como referencia
+ * relativa a tu propio gasto en vez de a una cifra en dólares fija que no
+ * tendría sentido aquí.
+ */
+const LEAN_FIRE_EXPENSE_MULTIPLIER = 0.7;
+const FAT_FIRE_EXPENSE_MULTIPLIER = 1.5;
+
 export function compareScenarios(values: FireInputValues): ScenarioComparison<FireMetrics> {
   const scenarios: ScenarioResult<FireMetrics>[] = [
     { id: "current-plan", label: "Con tu plan actual", metrics: computeMetrics(values) },
@@ -13,6 +24,22 @@ export function compareScenarios(values: FireInputValues): ScenarioComparison<Fi
       metrics: computeMetrics({
         ...values,
         monthlyContribution: values.monthlyContribution + EXTRA_MONTHLY_CONTRIBUTION,
+      }),
+    },
+    {
+      id: "lean-fire",
+      label: "Lean FIRE (gasto ajustado)",
+      metrics: computeMetrics({
+        ...values,
+        monthlyExpenses: values.monthlyExpenses * LEAN_FIRE_EXPENSE_MULTIPLIER,
+      }),
+    },
+    {
+      id: "fat-fire",
+      label: "Fat FIRE (con holgura)",
+      metrics: computeMetrics({
+        ...values,
+        monthlyExpenses: values.monthlyExpenses * FAT_FIRE_EXPENSE_MULTIPLIER,
       }),
     },
   ];
