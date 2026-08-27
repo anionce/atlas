@@ -3,9 +3,9 @@ title: "Por qué la regla del 4% no es una garantía"
 description: "La regla del 4% viene de un estudio con datos históricos, no de una ley física. Qué es el riesgo de secuencia de rentabilidades y por qué importa más cuanto antes te retires."
 slug: "regla-del-4-por-ciento-no-es-una-garantia"
 publishedAt: "2026-08-27"
-toolHref: "/fire"
-toolLabel: "calculadora FIRE"
-ctaText: "Nuestra calculadora FIRE usa la regla del 4% como punto de partida, no como promesa — es la forma más simple de tener una cifra con la que trabajar. Úsala para tener un número de referencia, y decide tú cuánto margen de seguridad quieres añadir por encima."
+toolHref: "/simulador-historico"
+toolLabel: "simulador histórico de jubilación"
+ctaText: "No hace falta quedarse solo con la teoría: el simulador histórico corre tu propio plan contra cada secuencia real de mercado desde 1928 y te dice qué porcentaje de ellas habría aguantado — incluida la cohorte de 1966 de la que habla este artículo."
 faq:
   - question: "¿De dónde sale exactamente la regla del 4%?"
     answer: "Del Trinity Study (1998), un análisis de tres profesores de la Universidad de Trinity sobre datos de mercado estadounidense de 1926 a 1995. Encontraron que, con una cartera 50% acciones / 50% bonos, retirar un 4% el primer año y ajustar esa cantidad por inflación cada año después funcionó en el 95% de los períodos de 30 años posibles dentro de esos datos — no en el 100%."
@@ -44,6 +44,8 @@ No hace falta obsesionarse con encontrar el decimal perfecto — hace falta trat
 - **Cuanto más largo sea tu horizonte de jubilación, más margen conviene dejar** por debajo del 4% — 3,25%-3,5% si tu jubilación va a durar 40 años o más.
 - **La flexibilidad es la mejor defensa contra el riesgo de secuencia.** Poder recortar gasto en los años malos (en vez de retirar la misma cantidad ajustada por inflación pase lo que pase) es lo que más mejora la tasa de éxito real en la práctica, más que ajustar el porcentaje inicial.
 - **Revisa el plan, no lo fijes una vez y lo olvides.** Un número FIRE calculado hoy es una foto fija con los datos de hoy, no una sentencia grabada en piedra.
+
+Si quieres ver esto con tus propios números en vez de con el ejemplo de 1966, nuestro [simulador histórico](/simulador-historico) corre tu plan contra las 69 secuencias reales de mercado desde 1928 y te dice qué porcentaje habría aguantado — con varias estrategias de retirada, no solo la regla fija del 4%.
 
 ## Lo esencial
 

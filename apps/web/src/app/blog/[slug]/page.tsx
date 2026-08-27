@@ -114,7 +114,7 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
             <CardTitle>Calcula tu caso exacto</CardTitle>
             <CardDescription>{post.ctaText}</CardDescription>
             <span className="text-primary mt-4 inline-flex items-center gap-1 text-sm font-medium">
-              Ir a la {post.toolLabel}
+              Ir a: {post.toolLabel}
               <span aria-hidden>→</span>
             </span>
           </Card>
