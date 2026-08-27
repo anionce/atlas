@@ -6,6 +6,7 @@ export { compareScenarios as compareCompoundInterestScenarios } from "./journeys
 export { compareScenarios as compareFireScenarios } from "./journeys/fire/scenarios";
 export { compareScenarios as comparePurchaseCostsScenarios } from "./journeys/purchase-costs/scenarios";
 export { compareScenarios as compareSavingsRateScenarios } from "./journeys/savings-rate/scenarios";
+export { compareScenarios as compareHistoricalBacktestScenarios } from "./journeys/historical-backtest/scenarios";
 
 export type { DecisionInput } from "./types";
 export type {
@@ -30,6 +31,13 @@ export type {
   SavingsRateInputValues,
   SavingsRateMetrics,
 } from "./journeys/savings-rate/types";
+export type {
+  HistoricalBacktestDecisionInput,
+  HistoricalBacktestInputValues,
+  HistoricalBacktestMetrics,
+  HistoricalBacktestSimulationSummary,
+  WithdrawalStrategyId,
+} from "./journeys/historical-backtest/types";
 
 export type {
   DecisionResult,

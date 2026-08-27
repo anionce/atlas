@@ -21,5 +21,8 @@ export type { FireRulesInput } from "./fire-rules";
 export { evaluateSavingsRateRules } from "./savings-rate-rules";
 export type { SavingsRateRulesInput } from "./savings-rate-rules";
 
+export { evaluateHistoricalBacktestRules } from "./historical-backtest-rules";
+export type { HistoricalBacktestRulesInput } from "./historical-backtest-rules";
+
 export { evaluatePurchaseCostsRules } from "./purchase-costs-rules";
 export type { PurchaseCostsRulesInput } from "./purchase-costs-rules";

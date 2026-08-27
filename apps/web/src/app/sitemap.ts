@@ -11,6 +11,7 @@ const routes = [
   { path: "/interes-compuesto", priority: 0.9 },
   { path: "/fire", priority: 0.9 },
   { path: "/tasa-de-ahorro", priority: 0.9 },
+  { path: "/simulador-historico", priority: 0.9 },
   { path: "/blog", priority: 0.7 },
 ];
 

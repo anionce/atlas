@@ -57,3 +57,5 @@ export {
   createPercentOfPortfolioStrategy,
   createVpwStrategy,
 } from "./withdrawal-strategies";
+
+export { calculateAverageHistoricalReturn } from "./historical-average-return";

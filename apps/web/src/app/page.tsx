@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { House, PiggyBank, Receipt, TrendingUp, Wallet } from "lucide-react";
+import { History, House, PiggyBank, Receipt, TrendingUp, Wallet } from "lucide-react";
 
 import { generateFAQSchema, generateMetadata as buildSeoMetadata } from "@atlas/seo";
 import { Card, CardDescription, CardTitle } from "@atlas/design-system";
@@ -46,6 +46,13 @@ const tools = [
     description:
       "Qué porcentaje de tus ingresos ahorras, y cuánto tardarías en ser libre a ese ritmo.",
     icon: Wallet,
+  },
+  {
+    href: "/simulador-historico",
+    title: "Simulador histórico de jubilación",
+    description:
+      "Prueba tu plan contra cada secuencia real de mercado desde 1928, con distintas estrategias de retirada.",
+    icon: History,
   },
 ];
 
