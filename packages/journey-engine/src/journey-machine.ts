@@ -117,9 +117,26 @@ export class JourneyMachine {
     const step = this.definition.steps.find((s) => s.id === stepId);
     if (!step) return null;
 
+    const answers: Record<string, unknown> = { ...this.state.answers, [stepId]: value };
+
+    // Si esta respuesta controla la visibilidad de otros pasos y, con el
+    // nuevo valor, alguno deja de verse, se descarta lo que hubiera en él.
+    // Si no, una respuesta de un paso que el usuario ya no ve (porque
+    // volvió atrás y cambió de opinión) podría seguir usándose en el
+    // cálculo sin que nadie la vea ni pueda corregirla.
+    for (const dependent of this.definition.steps) {
+      if (
+        dependent.dependsOn?.stepId === stepId &&
+        answers[dependent.id] !== undefined &&
+        answers[stepId] !== dependent.dependsOn.equals
+      ) {
+        delete answers[dependent.id];
+      }
+    }
+
     this.state = {
       ...this.state,
-      answers: { ...this.state.answers, [stepId]: value },
+      answers,
       lastUpdated: new Date().toISOString(),
     };
     this.persist();

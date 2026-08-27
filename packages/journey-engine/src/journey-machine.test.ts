@@ -134,6 +134,34 @@ describe("JourneyMachine", () => {
     expect(machine.getCurrentStep()?.id).toBe("vatQuestion");
   });
 
+  it("discards a dependent step's stale answer once it's no longer visible", () => {
+    const machine = new JourneyMachine(conditionalJourney);
+    machine.setAnswer("isNewConstruction", true);
+    machine.goNext();
+    machine.setAnswer("vatQuestion", 21_000);
+    expect(machine.getState().answers.vatQuestion).toBe(21_000);
+
+    // El usuario vuelve atrás y cambia de opinión: ahora no es obra nueva.
+    machine.goBack();
+    machine.setAnswer("isNewConstruction", false);
+
+    // vatQuestion ya no es visible, y su respuesta no debería seguir ahí
+    // "a escondidas" — si no, podría acabar usándose en el cálculo aunque
+    // el usuario ya no vea ni pueda corregir esa pregunta.
+    expect(machine.getState().answers.vatQuestion).toBeUndefined();
+  });
+
+  it("keeps a dependent step's answer when it's still visible after the change", () => {
+    const machine = new JourneyMachine(conditionalJourney);
+    machine.setAnswer("isNewConstruction", true);
+    machine.goNext();
+    machine.setAnswer("vatQuestion", 21_000);
+
+    // Volver a fijar el mismo valor de la condición no debería borrar nada.
+    machine.setAnswer("isNewConstruction", true);
+    expect(machine.getState().answers.vatQuestion).toBe(21_000);
+  });
+
   it("persists state after every answer and restores it on the next construction", () => {
     const persistence = new MemoryPersistenceAdapter();
     const machine = new JourneyMachine({ ...simpleJourney, id: "persisted" }, { persistence });

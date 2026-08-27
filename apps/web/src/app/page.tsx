@@ -70,7 +70,10 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <nav className="fixed top-0 right-0 p-6">
-        <Link href="/blog" className="text-muted-foreground text-sm hover:underline">
+        <Link
+          href="/blog"
+          className="text-foreground hover:text-primary hover:border-primary/40 border-input bg-background inline-flex items-center rounded-full border px-4 py-2 text-sm font-semibold transition-colors"
+        >
           Blog
         </Link>
       </nav>
