@@ -11,7 +11,7 @@ import {
 } from "@atlas/design-system";
 
 function formatEuros(amount: number): string {
-  return `${Math.round(amount).toLocaleString("es-ES")} €`;
+  return `${Math.round(amount).toLocaleString("es-ES", { useGrouping: "always" })} €`;
 }
 
 export interface ResultScreenProps {

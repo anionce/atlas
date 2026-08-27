@@ -7,7 +7,7 @@ import type { PurchaseCostsDecisionInput, PurchaseCostsMetrics } from "./types";
 import { validatePurchaseCostsInput } from "./validator";
 
 function formatEuros(amount: number): string {
-  return Math.round(amount).toLocaleString("es-ES");
+  return Math.round(amount).toLocaleString("es-ES", { useGrouping: "always" });
 }
 
 /**

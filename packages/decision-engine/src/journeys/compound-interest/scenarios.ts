@@ -35,5 +35,5 @@ function buildExplanation(scenarios: ScenarioResult<CompoundInterestMetrics>[]):
 
   return `"${alternative.label}" terminaría con aproximadamente ${Math.round(
     difference,
-  ).toLocaleString("es-ES")} € más que tu plan actual.`;
+  ).toLocaleString("es-ES", { useGrouping: "always" })} € más que tu plan actual.`;
 }

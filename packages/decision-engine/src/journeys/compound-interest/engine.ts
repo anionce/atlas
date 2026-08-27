@@ -13,7 +13,7 @@ import { validateCompoundInterestInput } from "./validator";
 const OPTIONAL_FIELDS = ["initialAmount", "goalAmount"] as const;
 
 function formatEuros(amount: number): string {
-  return Math.round(amount).toLocaleString("es-ES");
+  return Math.round(amount).toLocaleString("es-ES", { useGrouping: "always" });
 }
 
 function computeConfidence(values: CompoundInterestInputValues): number {

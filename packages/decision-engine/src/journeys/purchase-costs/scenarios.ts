@@ -38,5 +38,5 @@ function buildExplanation(scenarios: ScenarioResult<PurchaseCostsMetrics>[]): st
   }
 
   const cheaper = difference < 0 ? alternative.label : current.label;
-  return `"${cheaper}" saldría aproximadamente ${Math.round(Math.abs(difference)).toLocaleString("es-ES")} € más barato en impuestos y gastos.`;
+  return `"${cheaper}" saldría aproximadamente ${Math.round(Math.abs(difference)).toLocaleString("es-ES", { useGrouping: "always" })} € más barato en impuestos y gastos.`;
 }

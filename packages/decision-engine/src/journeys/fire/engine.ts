@@ -9,7 +9,7 @@ import { validateFireInput } from "./validator";
 const OPTIONAL_FIELDS = ["currentInvestments"] as const;
 
 function formatEuros(amount: number): string {
-  return Math.round(amount).toLocaleString("es-ES");
+  return Math.round(amount).toLocaleString("es-ES", { useGrouping: "always" });
 }
 
 function computeConfidence(values: FireInputValues): number {
