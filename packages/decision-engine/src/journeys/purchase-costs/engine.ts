@@ -10,6 +10,10 @@ function formatEuros(amount: number): string {
   return Math.round(amount).toLocaleString("es-ES", { useGrouping: "always" });
 }
 
+function formatPctWithOneDecimal(pct: number): string {
+  return pct.toLocaleString("es-ES", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+}
+
 /**
  * Punto de entrada del Journey "purchase-costs". El más pequeño de los
  * cuatro: solo dos preguntas, y ni siquiera necesita una fórmula nueva —
@@ -29,7 +33,7 @@ export function evaluatePurchaseCosts(
   const recommendations = generateRecommendations(input.values);
   const comparison = compareScenarios(input.values);
 
-  const summary = `Comprar esta vivienda te costaría aproximadamente ${formatEuros(metrics.total)} € en impuestos y gastos (${metrics.totalPct.toFixed(1)} % del precio).`;
+  const summary = `Comprar esta vivienda te costaría aproximadamente ${formatEuros(metrics.total)} € en impuestos y gastos (${formatPctWithOneDecimal(metrics.totalPct)} % del precio).`;
 
   const nextSteps = [
     "Compara obra nueva y segunda mano para ver cuánto cambia el gasto.",

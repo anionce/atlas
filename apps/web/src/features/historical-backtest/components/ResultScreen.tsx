@@ -18,6 +18,10 @@ function formatPct(pct: number): string {
   return `${Math.round(pct)} %`;
 }
 
+function formatPctWithOneDecimal(pct: number): string {
+  return `${pct.toLocaleString("es-ES", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} %`;
+}
+
 /**
  * Una barra por cada ventana histórica simulada — verde si la cartera
  * aguantó todo el plazo, roja si se agotó antes. No es una librería de
@@ -88,7 +92,7 @@ export function ResultScreen({ result, onRestart }: ResultScreenProps) {
         </Card>
         <Card>
           <CardDescription>Tasa de retirada del primer año</CardDescription>
-          <CardValue className="text-2xl">{withdrawalRatePct.toFixed(1)} %</CardValue>
+          <CardValue className="text-2xl">{formatPctWithOneDecimal(withdrawalRatePct)}</CardValue>
         </Card>
       </div>
 
