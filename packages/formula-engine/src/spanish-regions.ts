@@ -22,19 +22,21 @@ export type SpanishRegion =
 /**
  * Tipo general de ITP para vivienda usada, por Comunidad Autónoma.
  *
- * Dos simplificaciones reales, no solo "tipos reducidos que no contemplamos":
+ * Esta tabla da el tipo de un único tramo. Cataluña, Asturias, Extremadura,
+ * Baleares y Comunidad Valenciana en realidad tienen tramos progresivos
+ * según el precio de la vivienda (cada tramo tributa solo por su parte,
+ * como el IRPF) — para esas cinco comunidades, `calculatePurchaseCosts` usa
+ * `ITP_BRACKETS_BY_REGION` en vez de esta tabla; los valores de aquí quedan
+ * solo como referencia informativa (el tipo de su primer tramo).
  *
- * 1. Cada región tiene además tipos reducidos según el perfil del comprador
- *    (jóvenes, familia numerosa, VPO...); este modelo usa el tipo general,
- *    no el que pagaría cada comprador concreto.
- * 2. Varias comunidades (Cataluña, Comunidad Valenciana, Asturias, entre
- *    otras) no tienen un tipo único sino tramos progresivos según el precio
- *    de la vivienda — aquí se usa el tipo del primer tramo (el más bajo),
- *    así que para viviendas caras en esas comunidades el ITP real puede ser
- *    más alto que el que muestra la calculadora.
+ * Simplificación que sigue sin modelar: cada región tiene además tipos
+ * reducidos según el perfil del comprador (jóvenes, familia numerosa,
+ * VPO...); este modelo usa siempre el tipo general, no el que pagaría cada
+ * comprador concreto.
  *
  * Última verificación: agosto 2026 (corregido el tipo de Murcia, que bajó
- * de 8 % a 7,75 % en julio de 2025 por la Ley 3/2025). Revisar
+ * de 8 % a 7,75 % en julio de 2025 por la Ley 3/2025; añadidos los tramos
+ * progresivos de las cinco comunidades que los tienen). Revisar
  * periódicamente: cada Comunidad puede cambiarlo por ley autonómica.
  *
  * Para obra nueva seguimos usando el IVA nacional (10 %), que es uniforme

@@ -41,6 +41,18 @@ describe("calculatePurchaseCosts", () => {
     expect(cataluna.transferTaxOrVat).toBeCloseTo(250_000 * 0.1, 6);
   });
 
+  it("applies progressive ITP brackets for regions that have them, not a flat rate", () => {
+    // 800.000 € en Cataluña: 10 % de los primeros 600.000 (60.000) + 11 %
+    // de los 200.000 restantes (22.000) = 82.000 — no el 10 % plano
+    // (80.000) que daría un tipo único.
+    const result = calculatePurchaseCosts({
+      propertyPrice: 800_000,
+      isNewConstruction: false,
+      region: "cataluna",
+    });
+    expect(result.transferTaxOrVat).toBeCloseTo(82_000, 6);
+  });
+
   it("ignores region for new construction, which always uses national IVA", () => {
     const result = calculatePurchaseCosts({
       propertyPrice: 250_000,

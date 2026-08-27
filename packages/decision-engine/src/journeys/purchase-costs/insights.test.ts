@@ -30,4 +30,16 @@ describe("generateInsights", () => {
     const transferTax = insights.find((i) => i.code === "resale_transfer_tax");
     expect(transferTax?.message).toContain("6");
   });
+
+  it("describes progressive brackets, not a single rate, for regions that have them", () => {
+    const insights = generateInsights({
+      propertyPrice: 800_000,
+      isNewConstruction: false,
+      region: "cataluna",
+    });
+    const transferTax = insights.find((i) => i.code === "resale_transfer_tax");
+    expect(transferTax?.message).toContain("tramos progresivos");
+    expect(transferTax?.message).toContain("10");
+    expect(transferTax?.message).toContain("13");
+  });
 });

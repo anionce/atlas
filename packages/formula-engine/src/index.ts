@@ -7,6 +7,9 @@ export type { PurchaseCostsInput, PurchaseCostsBreakdown } from "./purchase-cost
 export { ITP_RATE_BY_REGION, DEFAULT_ITP_RATE } from "./spanish-regions";
 export type { SpanishRegion } from "./spanish-regions";
 
+export { ITP_BRACKETS_BY_REGION, calculateItpProgressive } from "./spanish-itp-brackets";
+export type { ItpBracket } from "./spanish-itp-brackets";
+
 export { calculateAffordability } from "./affordability";
 export type { AffordabilityInput, AffordabilityResult } from "./affordability";
 

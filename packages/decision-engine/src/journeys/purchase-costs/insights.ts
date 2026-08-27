@@ -1,4 +1,8 @@
-import { DEFAULT_ITP_RATE, ITP_RATE_BY_REGION } from "@atlas/formula-engine";
+import {
+  DEFAULT_ITP_RATE,
+  ITP_BRACKETS_BY_REGION,
+  ITP_RATE_BY_REGION,
+} from "@atlas/formula-engine";
 import { evaluatePurchaseCostsRules } from "@atlas/rules-engine";
 
 import type { Insight } from "../../shared-types";
@@ -13,6 +17,16 @@ function resaleTransferTaxCopy(
   values: PurchaseCostsInputValues,
 ): Omit<Insight, "code" | "severity"> {
   if (values.region) {
+    const brackets = ITP_BRACKETS_BY_REGION[values.region];
+    if (brackets) {
+      const lowestRatePct = brackets[0]!.ratePct;
+      const highestRatePct = brackets.at(-1)!.ratePct;
+      return {
+        title: "Segunda mano: pagas ITP",
+        message: `En tu comunidad autónoma el ITP no es un tipo único, sino tramos progresivos según el precio: del ${formatPct(lowestRatePct / 100)} % al ${formatPct(highestRatePct / 100)} %, según cuánto cueste la vivienda.`,
+      };
+    }
+
     const rate = ITP_RATE_BY_REGION[values.region];
     return {
       title: "Segunda mano: pagas ITP",
