@@ -17,6 +17,10 @@ faq:
 
 Cuando comparas dos viviendas al mismo precio, una nueva y otra de segunda mano, la diferencia de gastos de compra no es un detalle menor — puede suponer varios miles de euros, y el ganador depende sobre todo de en qué comunidad autónoma estés comprando.
 
+## IVA en vivienda nueva, ITP en segunda mano: por qué no es solo el tipo
+
+La pregunta corta es: **la vivienda nueva paga IVA (10 % en toda España, salvo Canarias); la de segunda mano paga ITP, que varía por comunidad autónoma**. No son el mismo impuesto con nombres distintos — son dos figuras fiscales diferentes, con reglas propias, y eso importa más de lo que parece a primera vista.
+
 ## Los impuestos son distintos, no solo el porcentaje
 
 Esto es lo que mucha gente no tiene claro: **vivienda nueva y segunda mano no pagan el mismo impuesto**, ni siquiera cuando el porcentaje final es parecido.

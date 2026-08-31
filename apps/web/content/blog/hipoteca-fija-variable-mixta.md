@@ -41,6 +41,22 @@ La hipoteca mixta combina un periodo inicial a tipo fijo (normalmente entre 3 y 
 
 **Riesgo principal**: sigue habiendo incertidumbre en la parte variable, solo que retrasada. Y las condiciones del tramo fijo inicial no siempre son mejores que las de una hipoteca fija pura, así que conviene comparar el coste total, no solo el tipo del primer tramo.
 
+## Cómo saber si tu hipoteca es fija, variable o mixta
+
+Si ya tienes una hipoteca firmada y no recuerdas qué tipo es, mira la escritura o la última cuota:
+
+- **Es fija** si la cuota lleva igual desde el primer mes, sin importar lo que haya hecho el Euríbor.
+- **Es variable** si la escritura menciona "Euríbor + [algún %]" y la cuota se revisa cada 6 o 12 meses.
+- **Es mixta** si la escritura fija un periodo inicial (ej. "primeros 5 años") a un tipo, seguido de "Euríbor + [algún %]" el resto del plazo.
+
+## Hipoteca fija o mixta: cómo elegir entre las dos
+
+Si estás dudando entre estas dos en concreto (sin plantearte la variable pura), la pregunta real es cuántos años de protección necesitas:
+
+- Si tu horizonte es largo (20-30 años) y prefieres no pensar más en esto, la **fija** te da certeza total desde el primer día, al precio de un tipo de salida algo más alto.
+- Si quieres pagar menos en los primeros años y asumes algo de riesgo a partir del año 5-10, la **mixta** cubre justo la parte del préstamo donde más capital pendiente tienes — que es cuando una subida de tipos duele más en euros absolutos.
+- No hay una respuesta única: compara el coste total estimado de cada oferta concreta, no solo el tipo de salida.
+
 ## Cómo decidir en la práctica
 
 Ninguna opción es objetivamente superior — depende de tu tolerancia al riesgo y de tu horizonte:
