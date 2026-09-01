@@ -1,6 +1,6 @@
 ---
 title: "Qué es FIRE y cómo calcular tu número"
-description: "Descubre qué es el movimiento FIRE, cómo se calcula tu número de independencia financiera y cuánto tiempo te llevaría alcanzarlo."
+description: "Qué es el movimiento FIRE, de dónde viene, sus variantes (Lean, Fat, Coast) y la fórmula detrás de la regla del 4 % — explicado sin jerga, con ejemplos reales."
 slug: "fire-independencia-financiera"
 publishedAt: "2026-08-04"
 toolHref: "/fire"

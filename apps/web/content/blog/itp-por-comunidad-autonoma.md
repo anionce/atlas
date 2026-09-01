@@ -1,6 +1,6 @@
 ---
 title: "ITP por comunidad autónoma en 2026: cuánto pagas al comprar una vivienda de segunda mano"
-description: "Consulta el tipo general de ITP en cada comunidad autónoma y calcula al momento cuánto pagarías de impuestos, notaría y registro al comprar tu vivienda."
+description: "El ITP va del 4 % al 13 % según la comunidad autónoma, y en cinco de ellas no es un tipo único sino tramos por precio. Compara las 19 comunidades en una tabla."
 slug: "itp-por-comunidad-autonoma"
 publishedAt: "2026-08-04"
 toolHref: "/gastos-compra-vivienda"
@@ -25,31 +25,33 @@ La base sobre la que se calcula el ITP es el valor de referencia de Catastro o e
 
 ## Tabla de tipos generales de ITP por comunidad autónoma
 
-Estos son los tipos generales aplicables a la compra de vivienda usada. Muchas comunidades tienen tipos reducidos para colectivos concretos (jóvenes, familias numerosas, personas con discapacidad, vivienda de protección oficial) que no se reflejan aquí — consulta siempre la normativa autonómica vigente antes de firmar, ya que estos porcentajes pueden cambiar por ley autonómica.
+Estos son los tipos generales aplicables a la compra de vivienda usada. Muchas comunidades tienen además tipos reducidos para colectivos concretos (jóvenes, familias numerosas, personas con discapacidad, vivienda de protección oficial) que no se reflejan aquí — consulta siempre la normativa autonómica vigente antes de firmar, ya que estos porcentajes pueden cambiar por ley autonómica.
+
+Cinco comunidades (marcadas con \*) no tienen un tipo único, sino **tramos progresivos según el precio de la vivienda** — como el IRPF, cada tramo tributa solo por la parte del precio que le corresponde, no el precio entero al tipo más alto alcanzado. La tabla muestra el rango completo, del tramo más bajo al más alto.
 
 | Comunidad autónoma         | ITP general |
 | -------------------------- | ----------- |
 | País Vasco                 | 4 %         |
 | Comunidad de Madrid        | 6 %         |
 | Comunidad Foral de Navarra | 6 %         |
+| Ceuta                      | 6 %         |
+| Melilla                    | 6 %         |
 | Canarias                   | 6,5 %       |
 | Andalucía                  | 7 %         |
 | La Rioja                   | 7 %         |
-| Ceuta                      | 6 %         |
-| Melilla                    | 6 %         |
+| Región de Murcia           | 7,75 %      |
 | Aragón                     | 8 %         |
-| Asturias                   | 8 %         |
-| Islas Baleares             | 8 %         |
 | Castilla y León            | 8 %         |
-| Extremadura                | 8 %         |
 | Galicia                    | 8 %         |
-| Región de Murcia           | 8 %         |
+| Asturias \*                | 8 % – 10 %  |
+| Islas Baleares \*          | 8 % – 13 %  |
+| Extremadura \*             | 8 % – 11 %  |
 | Cantabria                  | 9 %         |
 | Castilla-La Mancha         | 9 %         |
-| Comunidad Valenciana       | 9 %         |
-| Cataluña                   | 10 %        |
+| Comunidad Valenciana \*    | 9 % – 11 %  |
+| Cataluña \*                | 10 % – 13 % |
 
-**Ejemplo rápido:** en una vivienda de 250.000 €, el ITP puede ir desde los 10.000 € en País Vasco hasta los 25.000 € en Cataluña. Esa diferencia de 15.000 € es más que el coste de notaría, registro y tasación juntos.
+**Ejemplo rápido:** en una vivienda de 250.000 €, el ITP va desde los 10.000 € en País Vasco hasta los 25.000 € en Cataluña (dentro de su primer tramo, hasta 600.000 €). Esa diferencia de 15.000 € es más que el coste de notaría, registro y tasación juntos. En las comunidades con tramos, cuanto más cara sea la vivienda, más se acerca el tipo real al extremo alto del rango — una vivienda de 800.000 € en Cataluña, por ejemplo, paga un 10,25 % efectivo (82.000 €), no el 10 % del primer tramo.
 
 ## Qué más pagas además del ITP
 
