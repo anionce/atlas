@@ -33,11 +33,17 @@ Los tramos de la base del ahorro para 2026 son:
 
 Son progresivos por tramos, igual que el IRPF general: si tu base del ahorro total del año (dividendos + plusvalías + intereses, todo junto) es de 10.000 €, no pagas el 21 % sobre los 10.000 € — pagas el 19 % sobre los primeros 6.000 € y el 21 % solo sobre los 4.000 € restantes.
 
+## Cómo calcular el impuesto sobre tus dividendos, paso a paso
+
+1. Suma todos tus rendimientos del capital del año: dividendos cobrados, intereses de cuentas remuneradas y plusvalías por ventas de acciones o fondos. Ese total es tu base del ahorro.
+2. Aplica los tramos de la tabla anterior a ese total, de forma progresiva (como en el ejemplo de los 10.000 €).
+3. Resta lo que ya te han retenido durante el año — normalmente el 19 % de cada dividendo cobrado — al resultado del paso 2. La diferencia es lo que pagas (o te devuelven) en la declaración.
+
 ## Por qué te retienen el 19% aunque tu tramo real sea otro
 
 Cuando cobras un dividendo, el bróker o la entidad pagadora te retiene automáticamente un 19 % y lo ingresa en Hacienda en tu nombre. Esa retención es un **pago a cuenta**, no el impuesto definitivo: en la declaración de la renta se calcula lo que de verdad te corresponde según tu base del ahorro total del año, y se ajusta la diferencia (a pagar, si tu tramo real es más alto, o a devolver, si es más bajo o tienes pérdidas de otras inversiones que compensar). Es exactamente el mismo mecanismo que usa esta calculadora para ajustar el número FIRE por impuestos: la retirada bruta y lo que realmente te queda neto no son la misma cifra.
 
-## Dividendos extranjeros: aquí es donde la gente pierde dinero sin darse cuenta
+## Doble imposición en dividendos extranjeros: aquí es donde la gente pierde dinero sin darse cuenta
 
 Si el dividendo viene de una empresa extranjera, hay dos administraciones tributarias con derecho a llevarse su parte: el país de origen (donde retienen en el momento del pago) y España (donde declaras el importe íntegro, antes de esa retención). Para evitar que pagues dos veces por lo mismo, España tiene convenios de doble imposición (CDI) con la mayoría de países, que en general fijan el 15 % como el máximo que puedes recuperar en tu declaración a través de la deducción por doble imposición internacional (casilla 588).
 
