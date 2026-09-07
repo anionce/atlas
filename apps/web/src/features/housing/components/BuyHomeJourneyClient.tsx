@@ -8,7 +8,9 @@ import { trackScenarioCompared } from "@atlas/analytics";
 import { DecisionValidationError, evaluateDecision } from "@atlas/decision-engine";
 import { WizardScreen } from "@atlas/design-system";
 import { LocalStoragePersistenceAdapter } from "@atlas/journey-engine";
+import type { FaqItem } from "@atlas/seo";
 
+import { ToolFaq, ToolIntro } from "@/components/ToolIntro";
 import { StepField } from "@/components/StepField";
 import { buyHomeJourney } from "@/features/housing/buy-home.journey";
 import { toDecisionInput } from "@/features/housing/to-decision-input";
@@ -17,7 +19,7 @@ import { useStepError } from "@/lib/use-step-error";
 
 import { ResultScreen } from "./ResultScreen";
 
-export function BuyHomeJourneyClient() {
+export function BuyHomeJourneyClient({ intro, faqs }: { intro: string; faqs: FaqItem[] }) {
   const router = useRouter();
   const journey = useJourneyMachine(buyHomeJourney);
   const { state, currentStep, progress, isComplete, setAnswer, goNext, goBack } = journey;
@@ -92,6 +94,7 @@ export function BuyHomeJourneyClient() {
           ← Inicio
         </Link>
       </div>
+      <ToolIntro description={intro} />
       <WizardScreen
         title={buyHomeJourney.title.es}
         stepLabel={`Paso ${stepNumber} de ${progress.total}`}
@@ -109,6 +112,7 @@ export function BuyHomeJourneyClient() {
           onChange={(value) => setCurrentError(setAnswer(currentStep.id, value))}
         />
       </WizardScreen>
+      <ToolFaq faqs={faqs} />
     </div>
   );
 }

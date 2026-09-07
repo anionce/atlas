@@ -8,7 +8,9 @@ import { trackScenarioCompared } from "@atlas/analytics";
 import { DecisionValidationError, evaluateDecision } from "@atlas/decision-engine";
 import { WizardScreen } from "@atlas/design-system";
 import { LocalStoragePersistenceAdapter } from "@atlas/journey-engine";
+import type { FaqItem } from "@atlas/seo";
 
+import { ToolFaq, ToolIntro } from "@/components/ToolIntro";
 import { StepField } from "@/components/StepField";
 import { useJourneyMachine } from "@/lib/use-journey-machine";
 import { useStepError } from "@/lib/use-step-error";
@@ -17,7 +19,7 @@ import { compoundInterestJourney } from "../compound-interest.journey";
 import { toDecisionInput } from "../to-decision-input";
 import { ResultScreen } from "./ResultScreen";
 
-export function CompoundInterestJourneyClient() {
+export function CompoundInterestJourneyClient({ intro, faqs }: { intro: string; faqs: FaqItem[] }) {
   const router = useRouter();
   const journey = useJourneyMachine(compoundInterestJourney);
   const { state, currentStep, progress, isComplete, setAnswer, goNext, goBack } = journey;
@@ -90,6 +92,7 @@ export function CompoundInterestJourneyClient() {
           ← Inicio
         </Link>
       </div>
+      <ToolIntro description={intro} />
       <WizardScreen
         title={compoundInterestJourney.title.es}
         stepLabel={`Paso ${stepNumber} de ${progress.total}`}
@@ -107,6 +110,7 @@ export function CompoundInterestJourneyClient() {
           onChange={(value) => setCurrentError(setAnswer(currentStep.id, value))}
         />
       </WizardScreen>
+      <ToolFaq faqs={faqs} />
     </div>
   );
 }
