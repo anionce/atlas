@@ -58,7 +58,12 @@ export function createVpwStrategy(
     // convención de "cobra al final del año" que usan la mayoría de
     // fórmulas de anualidad de manual (incluida `calculateMortgage`).
     const annuityFactor = (r * (1 + r) ** (yearsRemaining - 1)) / ((1 + r) ** yearsRemaining - 1);
-    return context.portfolioBalance * annuityFactor;
+    // En el último año el factor vale 1 en teoría, pero con algunas
+    // rentabilidades el redondeo de coma flotante lo deja en 1,0000000000000007
+    // y retiraría unos céntimos más que el saldo: la cartera quedaría en
+    // negativo y la ventana contaría como fracaso aunque VPW agote el saldo
+    // justo al final, por diseño. Nunca se retira más de lo que hay.
+    return Math.min(context.portfolioBalance * annuityFactor, context.portfolioBalance);
   };
 }
 

@@ -79,6 +79,15 @@ describe("createVpwStrategy", () => {
     const withdrawal = vpw({ ...baseContext, yearIndex: 29, portfolioBalance: 7_890 });
     expect(withdrawal).toBeCloseTo(7_890, 6);
   });
+
+  it("never withdraws more than the balance, even when floating point rounds the final-year factor above 1", () => {
+    // Con esta rentabilidad el factor del último año sale como 1,0000000000000007.
+    const vpw = createVpwStrategy(30, 9.04191836734694);
+    const balance = 7_890;
+    expect(vpw({ ...baseContext, yearIndex: 29, portfolioBalance: balance })).toBeLessThanOrEqual(
+      balance,
+    );
+  });
 });
 
 describe("createGuytonKlingerStrategy", () => {
