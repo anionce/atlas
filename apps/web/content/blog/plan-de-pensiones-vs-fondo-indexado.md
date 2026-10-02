@@ -52,6 +52,10 @@ Un fondo indexado lo vendes cuando quieras y por el motivo que sea. El plan de p
 
 Para alguien que persigue FIRE, que justo quiere vivir de su capital antes de la edad de jubilación, esto pesa más que cualquier cálculo fiscal. Un dinero que no puedes tocar durante veinte años no te sirve para dejar de trabajar a los cuarenta y cinco.
 
+Un caso tipo, inventado para verlo con números: Álvaro tiene 38 años y aporta 1.500 € al año a un plan de pensiones, con un tipo marginal del 30 %. Cada año le devuelven 450 €. Si el plan rinde un 5 % anual, a los 48 años habrá reunido unos 19.000 € (15.000 € aportados más la rentabilidad).
+
+El problema es que Álvaro quiere dejar de trabajar a los 45. A esa edad su plan sigue bloqueado: no tiene paro de larga duración, ni una enfermedad grave, y sus aportaciones aún no cumplen los 10 años de antigüedad que permiten el rescate. Para vivir esos primeros años tendrá que tirar de sus fondos indexados, y el plan lo seguirá esperando hasta que llegue su momento. No es un error de Álvaro, es la forma en que funciona el producto, y conviene saberlo antes de contar con ese dinero.
+
 ## Entonces, ¿cuándo compensa el plan?
 
 Para quien busca FIRE hay un caso interesante. Si te retiras pronto y vives de una cartera de fondos ya tributada, tus ingresos declarados ese año serán bajos. El tipo marginal al que rescates el plan puede ser mucho menor que el 30 % o el 40 % al que desgravaste cuando trabajabas, y en ese escenario el plan sale claramente a tu favor.

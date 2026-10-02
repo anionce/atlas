@@ -55,6 +55,17 @@ Mucha gente en España invierte con brokers registrados en Irlanda, Alemania, Pa
 
 Cuánto te cubre cada uno depende del país, así que no te lo puedo resumir en una cifra. Lo que sí puedes hacer en cinco minutos es entrar en las condiciones legales de tu bróker, buscar el apartado sobre el fondo de garantía de inversores y apuntar tres cosas: qué fondo es, cuál es el límite y si cubre efectivo, valores o ambos. Una vez hecho, no hace falta volver a mirarlo cada año.
 
+## Un caso tipo (inventado, para verlo con números)
+
+Imagina a Marta, de 34 años, con 60.000 € repartidos en fondos indexados en un bróker registrado en otro país de la UE. Un día comprueba las condiciones y ve que el fondo de garantía de ese país cubre hasta 20.000 € por cliente.
+
+Qué significa eso, paso a paso:
+
+- Si el bróker quiebra y sus fondos están correctamente custodiados, lo normal es que Marta recupere sus participaciones y lo único que sufra sea el retraso del trámite.
+- Si hubiera un fraude y los activos no aparecieran, la garantía le cubriría 20.000 € de los 60.000 €. Los otros 40.000 € dependerían de lo que se recupere en el concurso.
+
+Ese es el tipo de comprobación que merece los cinco minutos. Marta no tiene por qué cambiar de bróker, pero ahora sabe cuánto riesgo asume, y quizá decide repartir el dinero entre dos brokers para que cada uno tenga su propio límite.
+
 ## Quedarse con esto
 
 El riesgo de que tu bróker quiebre es pequeño, pero es de esos que nadie mira hasta que importa. Saber qué fondo te respalda y hasta cuánto no cambia tu rentabilidad, pero te evita dar por hecho algo que quizá no es cierto.
