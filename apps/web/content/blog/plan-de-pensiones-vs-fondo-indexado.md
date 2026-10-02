@@ -5,7 +5,7 @@ slug: "plan-de-pensiones-vs-fondo-indexado"
 publishedAt: "2026-08-27"
 toolHref: "/fire"
 toolLabel: "calculadora FIRE"
-ctaText: "Sea cual sea el vehículo que elijas, lo primero es saber cuánto capital necesitas para ser independiente financieramente. Usa la calculadora FIRE — ya tiene en cuenta la pensión pública en la proyección — y decide después con qué herramienta llegar hasta ahí."
+ctaText: "Sea cual sea el vehículo que elijas, lo primero es saber cuánto capital necesitas para ser independiente financieramente. Usa la calculadora FIRE, que ya tiene en cuenta la pensión pública en la proyección, y decide después con qué herramienta llegar hasta ahí."
 faq:
   - question: "¿Puedo rescatar mi plan de pensiones antes de jubilarme?"
     answer: "Solo en casos concretos: paro de larga duración, enfermedad grave, o —desde 2025— aportaciones con más de 10 años de antigüedad (las hechas desde 2015 en adelante, según van cumpliendo esa antigüedad). Fuera de esos supuestos, el dinero queda prácticamente inmovilizado hasta la jubilación, algo que no ocurre con un fondo indexado, que puedes vender cuando quieras."
@@ -15,44 +15,47 @@ faq:
     answer: "Porque tributan cosas distintas y a escalas distintas. El fondo indexado solo tributa por la ganancia (lo que ha crecido), a la escala del ahorro (19 %-30 % en 2026). El plan de pensiones tributa por el importe íntegro que rescatas —tu aportación original más todo lo que ha crecido— como si fuera tu salario de ese año, a la escala general del IRPF, que puede llegar al 47 %."
 ---
 
-Es una de las preguntas que más aparece cuando alguien empieza a invertir con la vista puesta en la jubilación o en FIRE: ¿mejor un plan de pensiones, con su desgravación anual, o un fondo indexado, sin ventaja fiscal a la entrada pero con más libertad? La respuesta corta es que no son sustitutos — son dos mecanismos fiscales opuestos, y cuál compensa depende de un dato muy concreto: **tu tipo marginal ahora frente al que tendrás cuando rescates**.
+Cuando empiezas a invertir pensando en la jubilación (o en FIRE), llega pronto esta duda: ¿plan de pensiones, que me devuelve dinero en la renta, o fondo indexado, que no me da nada a cambio pero me deja más libre?
 
-## Cómo funciona cada uno, en una frase
+No son intercambiables. Funcionan con reglas fiscales casi opuestas, y cuál te conviene depende de un dato que se suele pasar por alto: el tipo de IRPF que pagarás cuando saques el dinero, comparado con el que pagas ahora.
 
-Un plan de pensiones **desgrava tus aportaciones hoy y tributa por el total mañana**. Un fondo indexado **no desgrava nada hoy, pero solo tributa por la ganancia cuando vendes**. Toda la diferencia entre los dos sale de ahí.
+## La diferencia, en dos frases
 
-## La aportación: dinero de vuelta ahora mismo
+El plan de pensiones **te deja descontar la aportación hoy y te cobra impuestos por todo lo que rescates mañana**. El fondo indexado **no te descuenta nada hoy, pero el día que vendes solo pagas por la ganancia**.
 
-Lo que metas en un plan de pensiones cada año se resta de tu base imponible general del IRPF, hasta un máximo de **1.500 € anuales** en 2026 (o el 30 % de tus rendimientos netos del trabajo, si es menor). Si tu tipo marginal es del 30 %, aportar 1.500 € te devuelve unos 450 € en la siguiente declaración — dinero real, ese mismo año.
+Todo lo demás sale de ahí.
 
-Un fondo indexado no ofrece nada de esto: inviertes con dinero que ya ha pagado sus impuestos correspondientes, sin ningún tipo de devolución ni deducción por invertir.
+## Lo que ganas al aportar
 
-## El rescate: aquí es donde cambia todo
+Lo que aportes a un plan de pensiones se resta de tu base imponible general, hasta **1.500 € al año** en 2026 (o el 30 % de tus rendimientos del trabajo, si esa cifra es menor). Si tu tipo marginal es del 30 %, aportar 1.500 € te devuelve unos 450 € en la siguiente declaración. Dinero de verdad, al año siguiente.
 
-Esta es la parte que menos se explica y la que más sorprende cuando llega el momento: al rescatar un plan de pensiones, **tributa el importe íntegro** —tu aportación original más toda la revalorización acumulada durante años—, y lo hace como **rendimiento del trabajo**, en la escala general del IRPF (la misma que tu nómina, hasta el 47 % en los tramos más altos). No hay distinción entre "lo que aportaste" y "lo que ha crecido": todo entra junto, como si ese año hubieras cobrado ese dinero como salario.
+El fondo indexado no tiene nada parecido. Inviertes dinero que ya ha pasado por Hacienda.
 
-Un fondo indexado, en cambio, solo tributa por la ganancia patrimonial —la diferencia entre lo que invertiste y lo que recuperas al vender—, y lo hace en la base del ahorro (19 %-30 % en 2026), con tipos notablemente más bajos que los tramos altos de la escala general.
+## Lo que pagas al rescatar
 
-En otras palabras: el plan de pensiones no es un ahorro de impuestos, es un **aplazamiento**. Pagas menos ahora a cambio de pagar más tarde, sobre una base mayor (el total, no solo la ganancia) y potencialmente a un tipo más alto.
+Aquí está lo que más sorprende. Al rescatar un plan de pensiones, **tributa todo el importe**, no solo la ganancia. Tu aportación original más lo que haya crecido, sumado a tu base general como si fuera sueldo de ese año. Y la escala general sube hasta el 47 %.
 
-## La liquidez: dinero disponible frente a dinero bloqueado
+El fondo, en cambio, solo tributa la diferencia entre lo que pusiste y lo que recuperas, en la escala del ahorro: del 19 % al 30 % en 2026.
 
-Un fondo indexado lo puedes vender el día que quieras, por el motivo que quieras. Un plan de pensiones, no: el rescate está limitado a la jubilación salvo excepciones concretas (paro de larga duración, enfermedad grave, o aportaciones con más de 10 años de antigüedad desde 2025). Para alguien que persigue la independencia financiera —que por definición quiere poder vivir de su capital antes de la edad de jubilación oficial— esta rigidez es una limitación real, no solo un detalle administrativo.
+## Un ejemplo con números
 
-## Entonces, ¿cuándo compensa el plan de pensiones?
+Supongamos que tu tipo marginal es del 30 % y que 10.000 € invertidos se duplican durante los años que tardas en rescatar. Para comparar justo, el dinero que sale de tu bolsillo tiene que ser el mismo en los dos casos:
 
-Depende casi por completo de cómo se comparen dos tipos marginales tuyos, en dos momentos distintos:
+- **Plan de pensiones:** aportas 10.000 €, pero Hacienda te devuelve 3.000 €, así que a ti te cuesta 7.000 €. Los 10.000 € se convierten en 20.000 €. Si al rescatar tu tipo marginal sigue siendo del 30 %, pagas 6.000 € y te quedan **14.000 €**.
+- **Fondo indexado:** pones los mismos 7.000 € de tu bolsillo, se duplican a 14.000 €. La ganancia son 7.000 €: los primeros 6.000 € tributan al 19 % (1.140 €) y los 1.000 € restantes al 21 % (210 €). Te quedan **12.650 €**.
 
-- **Tu tipo marginal ahora**, mientras aportas (cuanto más alto, más te devuelve cada aportación).
-- **Tu tipo marginal cuando rescates**, sumado al resto de tus ingresos de ese año (cuanto más bajo, menos pagas por el total).
+Con el mismo tipo marginal al entrar y al salir, gana el plan. Para que el fondo empatara, tu tipo marginal al rescatar tendría que rondar el 37 %, unos siete puntos por encima del de cuando aportaste. Los números son un ejemplo (cambian si el dinero crece más o menos, o si cambian los tramos), pero muestran algo que se suele contar mal: el plan de pensiones no es una trampa fiscal. Es un aplazamiento que sale bien siempre que no te cobren mucho más al final que al principio.
 
-Aquí hay una particularidad que interesa especialmente a quien busca FIRE: si te retiras antes de la edad de jubilación y vives con ingresos declarados bajos —por ejemplo, retirando principalmente de una cartera ya tributada en fondos indexados—, tu tipo marginal en el año en que decidas rescatar el plan de pensiones podría ser mucho más bajo que el tipo al que desgravaste durante tus años de mayores ingresos. En ese escenario concreto, el aplazamiento puede salir a tu favor. Pero es una apuesta sobre tu situación fiscal futura y sobre una ley que puede cambiar antes de que llegue ese momento — no una certeza.
+## El problema es la liquidez
 
-Para la mayoría de quien ahorra de forma agresiva para FIRE, el límite de 1.500 € anuales tampoco da para mucho: no compite en volumen con lo que se suele invertir mensualmente en fondos indexados. En la práctica, esto convierte al plan de pensiones en un complemento marginal más que en una alternativa real a la estrategia principal.
+Un fondo indexado lo vendes cuando quieras y por el motivo que sea. El plan de pensiones no: el rescate está limitado a la jubilación, salvo casos como paro de larga duración, enfermedad grave o aportaciones con más de 10 años de antigüedad (desde 2025).
 
-## Lo esencial
+Para alguien que persigue FIRE, que justo quiere vivir de su capital antes de la edad de jubilación, esto pesa más que cualquier cálculo fiscal. Un dinero que no puedes tocar durante veinte años no te sirve para dejar de trabajar a los cuarenta y cinco.
 
-- El plan de pensiones desgrava ahora, pero tributa el importe íntegro como salario al rescatarlo (escala general, hasta el 47 %).
-- El fondo indexado no desgrava, pero solo tributa la ganancia al vender (escala del ahorro, 19 %-30 %).
-- El plan de pensiones está bloqueado hasta la jubilación, salvo excepciones concretas; el fondo indexado lo puedes vender cuando quieras.
-- Compensa sobre todo si esperas un tipo marginal notablemente más bajo al rescatar que el que tienes ahora — y el límite de 1.500 €/año lo convierte, para la mayoría, en un complemento y no en la base de la estrategia.
+## Entonces, ¿cuándo compensa el plan?
+
+Para quien busca FIRE hay un caso interesante. Si te retiras pronto y vives de una cartera de fondos ya tributada, tus ingresos declarados ese año serán bajos. El tipo marginal al que rescates el plan puede ser mucho menor que el 30 % o el 40 % al que desgravaste cuando trabajabas, y en ese escenario el plan sale claramente a tu favor.
+
+Pero es una apuesta sobre cómo estará tu situación y sobre unas leyes que pueden cambiar en veinte años. No es una certeza.
+
+Y hay un freno práctico: con un tope de 1.500 € anuales, el plan de pensiones no puede ser la base de una estrategia FIRE. Quien ahorra de forma agresiva mete mucho más al mes en fondos indexados. En la práctica es un complemento que puedes usar para aprovechar la desgravación, no la pieza principal.
