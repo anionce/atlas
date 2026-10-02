@@ -8,6 +8,8 @@ import {
 } from "@atlas/seo";
 
 import { SavingsRateJourneyClient } from "@/features/savings-rate/components/SavingsRateJourneyClient";
+import { ToolMethod } from "@/components/ToolIntro";
+import { SAVINGS_RATE_METHOD } from "@/content/tool-methods";
 
 const TITLE = "Calculadora de tasa de ahorro";
 const DESCRIPTION =
@@ -64,7 +66,9 @@ export default function SavingsRatePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <SavingsRateJourneyClient intro={INTRO} faqs={FAQS} />
+      <SavingsRateJourneyClient intro={INTRO} faqs={FAQS}>
+        <ToolMethod title="Cómo calculamos tu tasa de ahorro" sections={SAVINGS_RATE_METHOD} />
+      </SavingsRateJourneyClient>
     </>
   );
 }

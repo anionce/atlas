@@ -8,6 +8,8 @@ import {
 } from "@atlas/seo";
 
 import { FireJourneyClient } from "@/features/investing/components/FireJourneyClient";
+import { ToolMethod } from "@/components/ToolIntro";
+import { FIRE_METHOD } from "@/content/tool-methods";
 
 const TITLE = "Calculadora FIRE: independencia financiera";
 const DESCRIPTION =
@@ -69,7 +71,9 @@ export default function FirePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <FireJourneyClient intro={INTRO} faqs={FAQS} />
+      <FireJourneyClient intro={INTRO} faqs={FAQS}>
+        <ToolMethod title="Cómo calculamos tu número FIRE" sections={FIRE_METHOD} />
+      </FireJourneyClient>
     </>
   );
 }

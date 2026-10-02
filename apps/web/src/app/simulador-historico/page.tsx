@@ -8,6 +8,8 @@ import {
 } from "@atlas/seo";
 
 import { HistoricalBacktestJourneyClient } from "@/features/historical-backtest/components/HistoricalBacktestJourneyClient";
+import { ToolMethod } from "@/components/ToolIntro";
+import { HISTORICAL_BACKTEST_METHOD } from "@/content/tool-methods";
 
 const TITLE = "Simulador histórico de jubilación";
 const DESCRIPTION =
@@ -69,7 +71,9 @@ export default function HistoricalBacktestPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <HistoricalBacktestJourneyClient intro={INTRO} faqs={FAQS} />
+      <HistoricalBacktestJourneyClient intro={INTRO} faqs={FAQS}>
+        <ToolMethod title="Cómo funciona el simulador" sections={HISTORICAL_BACKTEST_METHOD} />
+      </HistoricalBacktestJourneyClient>
     </>
   );
 }

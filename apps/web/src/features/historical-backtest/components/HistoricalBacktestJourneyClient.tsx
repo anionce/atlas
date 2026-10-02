@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, type ReactNode } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -22,9 +22,11 @@ import { ResultScreen } from "./ResultScreen";
 export function HistoricalBacktestJourneyClient({
   intro,
   faqs,
+  children,
 }: {
   intro: string;
   faqs: FaqItem[];
+  children?: ReactNode;
 }) {
   const router = useRouter();
   const journey = useJourneyMachine(historicalBacktestJourney);
@@ -116,6 +118,7 @@ export function HistoricalBacktestJourneyClient({
           onChange={(value) => setCurrentError(setAnswer(currentStep.id, value))}
         />
       </WizardScreen>
+      {children}
       <ToolFaq faqs={faqs} />
     </div>
   );

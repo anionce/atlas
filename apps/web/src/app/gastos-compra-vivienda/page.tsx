@@ -8,6 +8,8 @@ import {
 } from "@atlas/seo";
 
 import { PurchaseCostsJourneyClient } from "@/features/housing/components/PurchaseCostsJourneyClient";
+import { ToolMethod } from "@/components/ToolIntro";
+import { PURCHASE_COSTS_METHOD } from "@/content/tool-methods";
 
 const TITLE = "Calculadora de gastos de compra de vivienda (ITP/IVA)";
 const DESCRIPTION =
@@ -69,7 +71,9 @@ export default function GastosCompraViviendaPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <PurchaseCostsJourneyClient intro={INTRO} faqs={FAQS} />
+      <PurchaseCostsJourneyClient intro={INTRO} faqs={FAQS}>
+        <ToolMethod title="Cómo calculamos los gastos de compra" sections={PURCHASE_COSTS_METHOD} />
+      </PurchaseCostsJourneyClient>
     </>
   );
 }

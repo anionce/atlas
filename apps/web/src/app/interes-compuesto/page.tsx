@@ -8,6 +8,8 @@ import {
 } from "@atlas/seo";
 
 import { CompoundInterestJourneyClient } from "@/features/saving/components/CompoundInterestJourneyClient";
+import { ToolMethod } from "@/components/ToolIntro";
+import { COMPOUND_INTEREST_METHOD } from "@/content/tool-methods";
 
 const TITLE = "Calculadora de interés compuesto";
 const DESCRIPTION =
@@ -64,7 +66,12 @@ export default function InteresCompuestoPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <CompoundInterestJourneyClient intro={INTRO} faqs={FAQS} />
+      <CompoundInterestJourneyClient intro={INTRO} faqs={FAQS}>
+        <ToolMethod
+          title="Cómo calculamos tu ahorro a futuro"
+          sections={COMPOUND_INTEREST_METHOD}
+        />
+      </CompoundInterestJourneyClient>
     </>
   );
 }

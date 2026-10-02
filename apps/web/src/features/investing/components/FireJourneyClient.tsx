@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, type ReactNode } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -19,7 +19,15 @@ import { fireJourney } from "../fire.journey";
 import { toDecisionInput } from "../to-decision-input";
 import { ResultScreen } from "./ResultScreen";
 
-export function FireJourneyClient({ intro, faqs }: { intro: string; faqs: FaqItem[] }) {
+export function FireJourneyClient({
+  intro,
+  faqs,
+  children,
+}: {
+  intro: string;
+  faqs: FaqItem[];
+  children?: ReactNode;
+}) {
   const router = useRouter();
   const journey = useJourneyMachine(fireJourney);
   const { state, currentStep, progress, isComplete, setAnswer, goNext, goBack } = journey;
@@ -110,6 +118,7 @@ export function FireJourneyClient({ intro, faqs }: { intro: string; faqs: FaqIte
           onChange={(value) => setCurrentError(setAnswer(currentStep.id, value))}
         />
       </WizardScreen>
+      {children}
       <ToolFaq faqs={faqs} />
     </div>
   );

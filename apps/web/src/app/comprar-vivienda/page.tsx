@@ -8,6 +8,8 @@ import {
 } from "@atlas/seo";
 
 import { BuyHomeJourneyClient } from "@/features/housing/components/BuyHomeJourneyClient";
+import { ToolMethod } from "@/components/ToolIntro";
+import { BUY_HOME_METHOD } from "@/content/tool-methods";
 
 const TITLE = "Simulador para comprar una vivienda";
 const DESCRIPTION =
@@ -69,7 +71,9 @@ export default function ComprarViviendaPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <BuyHomeJourneyClient intro={INTRO} faqs={FAQS} />
+      <BuyHomeJourneyClient intro={INTRO} faqs={FAQS}>
+        <ToolMethod title="Cómo calculamos cuánto puedes comprar" sections={BUY_HOME_METHOD} />
+      </BuyHomeJourneyClient>
     </>
   );
 }

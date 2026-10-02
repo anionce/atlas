@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, type ReactNode } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -19,7 +19,15 @@ import { useStepError } from "@/lib/use-step-error";
 
 import { ResultScreen } from "./ResultScreen";
 
-export function BuyHomeJourneyClient({ intro, faqs }: { intro: string; faqs: FaqItem[] }) {
+export function BuyHomeJourneyClient({
+  intro,
+  faqs,
+  children,
+}: {
+  intro: string;
+  faqs: FaqItem[];
+  children?: ReactNode;
+}) {
   const router = useRouter();
   const journey = useJourneyMachine(buyHomeJourney);
   const { state, currentStep, progress, isComplete, setAnswer, goNext, goBack } = journey;
@@ -112,6 +120,7 @@ export function BuyHomeJourneyClient({ intro, faqs }: { intro: string; faqs: Faq
           onChange={(value) => setCurrentError(setAnswer(currentStep.id, value))}
         />
       </WizardScreen>
+      {children}
       <ToolFaq faqs={faqs} />
     </div>
   );

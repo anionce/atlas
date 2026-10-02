@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, type ReactNode } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -19,7 +19,15 @@ import { purchaseCostsJourney } from "../purchase-costs.journey";
 import { toDecisionInput } from "../purchase-costs-to-decision-input";
 import { PurchaseCostsResultScreen } from "./PurchaseCostsResultScreen";
 
-export function PurchaseCostsJourneyClient({ intro, faqs }: { intro: string; faqs: FaqItem[] }) {
+export function PurchaseCostsJourneyClient({
+  intro,
+  faqs,
+  children,
+}: {
+  intro: string;
+  faqs: FaqItem[];
+  children?: ReactNode;
+}) {
   const router = useRouter();
   const journey = useJourneyMachine(purchaseCostsJourney);
   const { state, currentStep, progress, isComplete, setAnswer, goNext, goBack } = journey;
@@ -110,6 +118,7 @@ export function PurchaseCostsJourneyClient({ intro, faqs }: { intro: string; faq
           onChange={(value) => setCurrentError(setAnswer(currentStep.id, value))}
         />
       </WizardScreen>
+      {children}
       <ToolFaq faqs={faqs} />
     </div>
   );
